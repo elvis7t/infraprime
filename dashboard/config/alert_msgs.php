@@ -147,7 +147,7 @@
 			  <li><!-- start message -->
 				<a href="sys_ler_mail.php?token=<?=$_SESSION['token'];?>&acao=N&mail_Id=<?=$rs->fld("mail_Id");?>">
 				  <div class="pull-left">
-					<img src="https://infraprime.000webhostapp.com/dashboard/<?=$rs->fld('usu_foto');?>" class="img-circle" alt="User Image">
+					<img src="http://localhost/infraprime/dashboard/<?=$rs->fld('usu_foto');?>" class="img-circle" alt="User Image">
 				  </div>
 				  <h4>
 					<?=$rs->fld("mail_assunto");?>

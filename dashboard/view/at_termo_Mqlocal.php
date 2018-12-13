@@ -796,33 +796,33 @@ $rs_rel = new recordset();
 
 
 
-<script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
     <!-- Bootstrap 3.3.5 -->
 
-    <script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- FastClick -->
 
-    <script src="http://localhost/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
 
     <!-- AdminLTE App -->
 
-    <script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
 
     <!-- SlimScroll 1.3.0 -->
 
-    <script src="http://localhost/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 
-	<script src="http://localhost/dashboard/assets/js/maskinput.js"></script>
+	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
 
-    <script src="http://localhost/dashboard/assets/js/jmask.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
 
-    <script src="http://localhost/dashboard/js/action_ativos.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>
 
-    <script src="http://localhost/dashboard/js/jquery.cookie.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/jquery.cookie.js"></script>
 
-    <script src="http://localhost/dashboard/js/controle.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/controle.js"></script>
 
 
 

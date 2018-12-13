@@ -59,7 +59,7 @@ else{
 		//$usuario = "elvist@bol.com.br";
 		//$senha = "silva777"; 
  
-		//Arquivos (t· aqui a pegadinha...) 
+		//Arquivos (t√° aqui a pegadinha...) 
 		//Primeiro: Vamos fazer um array com o arquivos e seu respectivo nome
 		
 		$comp_arqs = array_combine($arqs, $narqs);

@@ -54,7 +54,7 @@ while($rs->GeraDados()){ ?>
 endif; 
 ?>
 <!--<script>
-<script src="http://localhost/dashboard/js/functions.js"></script>     
+<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>     
 
 // Atualizar a cada 10 segundos
 	 

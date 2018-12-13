@@ -150,7 +150,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-desktop"></i>   
 					</div>
-					<a href="http://localhost/dashboard/view/at_monitoreslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_monitoreslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 				
@@ -164,7 +164,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-mouse-pointer"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mouseslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_mouseslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 					
@@ -180,7 +180,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-keyboard-o"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_tecladoslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_tecladoslocais.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 		 
@@ -195,7 +195,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_maquinasreservalocal.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_maquinasreservalocal.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 				
@@ -213,7 +213,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mqmanutencaolocal.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_mqmanutencaolocal.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 
@@ -230,7 +230,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-print"></i>  
 					</div>
-					<a href="http://localhost/dashboard/view/at_eqmanutencaolocale.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_eqmanutencaolocale.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 			
@@ -387,7 +387,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-desktop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_monitores.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_monitores.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 
@@ -401,7 +401,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-mouse-pointer"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mouses.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_mouses.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 				
@@ -416,7 +416,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-keyboard-o"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_teclados.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_teclados.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 		   
@@ -430,7 +430,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-mobile"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_radios.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_radios.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 				</div><!-- /.info-box -->
@@ -447,7 +447,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_maquinasreserva.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_maquinasreserva.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 				
@@ -461,7 +461,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="glyphicon glyphicon-phone-alt"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_telefones.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_telefones.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 			
@@ -476,7 +476,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mqmanutencao.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_mqmanutencao.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 
@@ -493,7 +493,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-print"></i>  
 					</div>
-					<a href="http://localhost/dashboard/view/at_eqmanutencaoe.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_eqmanutencaoe.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 				<!--///////////////////  Arquivo que envia os emails  \\\\\\\\\\\\\\\\\-->
@@ -665,7 +665,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-desktop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_monitores.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_monitores.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 
@@ -679,7 +679,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-mouse-pointer"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mouses.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_mouses.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 				
@@ -694,7 +694,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-keyboard-o"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_teclados.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_teclados.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 		   
@@ -708,7 +708,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-mobile"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_radios.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="http://localhost/infraprime/dashboard/view/at_radios.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 				</div> 
 				</div><!-- /.info-box -->
@@ -725,7 +725,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_maquinasreserva.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_maquinasreserva.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 				
@@ -739,7 +739,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="glyphicon glyphicon-phone-alt"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_telefones.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_telefones.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div> 
 			
@@ -754,7 +754,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-laptop"></i> 
 					</div>
-					<a href="http://localhost/dashboard/view/at_mqmanutencao.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_mqmanutencao.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 
@@ -771,7 +771,7 @@ $fn = new functions();
 					<div class="icon">
 						<i class="fa fa-print"></i>  
 					</div>
-					<a href="http://localhost/dashboard/view/at_eqmanutencaoe.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
+					<a href="http://localhost/infraprime/dashboard/view/at_eqmanutencaoe.php?token=<?=$_SESSION['token'];?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a> 
 				</div>
 				</div>
 				<!--///////////////////  Arquivo que envia os emails  \\\\\\\\\\\\\\\\\-->
@@ -809,28 +809,28 @@ $fn = new functions();
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
     <!-- Sparkline -->
-    <script src="http://localhost/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
-    <script src="http://localhost/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- ChartJS 1.0.1 -->
-    <script src="http://localhost/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="http://localhost/dashboard/assets/plugins/morris/morris.min.js"></script>
+	<script src="http://localhost/infraprime/dashboard/assets/plugins/morris/morris.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-   <!-- <script src="http://localhost/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
+   <!-- <script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/dashboard/assets/dist/js/demo.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
 	
 	
   </body>

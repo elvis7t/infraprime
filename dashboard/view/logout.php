@@ -22,6 +22,6 @@ session_destroy();
 require_once("../model/recordset.php");
 $rslogout = new recordset();
 $rslogout->FreeSql("UPDATE sys_logado SET log_status='0' WHERE log_user = '".$user."' AND log_token='".$token."'");
-header("location:http://localhost/dashboard");
+header("location:http://localhost/infraprime/dashboard");
 exit;
 ?>

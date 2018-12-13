@@ -2,7 +2,7 @@
 //sujeira embaixo do tapete :(
 //error_reporting(E_ALL & E_NOTICE & E_WARNING);
 
-/*inclusÃ£o dos principais itens da pÃ¡gina */
+/*inclusão dos principais itens da página */
 session_start();
 //$sec = "REL";
 //$pag = "at_relatorio.php";
@@ -32,7 +32,7 @@ require_once("../model/recordset.php");
 								$rs->FreeSql($sql);
 								$rs->GeraDados();   
 								?>
-						<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="https://infraprime.000webhostapp.com/dashboard/<?=$rs->fld('emp_logo');?>" alt="Logo da Empresa"></small> 
+						<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_logo');?>" alt="Logo da Empresa"></small> 
 							<?=$rs->fld("emp_nome");?>  
 						<small class="pull-right">Data: <?=date("d/m/Y");?></small>
 					</h2>
@@ -82,6 +82,6 @@ require_once("../model/recordset.php");
 		</div><!-- ./wrapper -->
 
 		<!-- AdminLTE App -->
-		<script src="https://infraprime.000webhostapp.com/dashboard/assets/dist/js/app.min.js"></script>
+		<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
 	</body>
 </html>

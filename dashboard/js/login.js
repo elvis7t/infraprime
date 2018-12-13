@@ -32,7 +32,7 @@ $(document).ready(function(){
 			if(data.status=="OK"){
 				$("<div></div>").addClass("alert alert-success alert-dismissable").html(data.mensagem+'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#ers").fadeIn("slow");
 				console.log(data.mensagem);
-				$(location).attr('href','http://localhost/dashboard/view/index.php?token='+data.token);
+				$(location).attr('href','http://localhost/infraprime/dashboard/view/index.php?token='+data.token);
 			}
 			else{
 				$("<div></div>").addClass("alert alert-danger alert-dismissable").html(data.mensagem+'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#ers").fadeIn("slow");

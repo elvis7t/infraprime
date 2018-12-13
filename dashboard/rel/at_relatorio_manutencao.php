@@ -78,21 +78,21 @@ $rs = new recordset();
 		require_once("../config/footer.php");
 	?></div><!-- ./wrapper -->
 
-<script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
    <!-- Slimscroll -->
-    <script src="http://localhost/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!--datatables-->
-    <script src="http://localhost/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script src="http://localhost/dashboard/js/action_ativos.js"></script>
-    <script src="http://localhost/dashboard/js/jquery.cookie.js"></script>
-    <script src="http://localhost/dashboard/js/controle.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/jquery.cookie.js"></script>
+    <script src="http://localhost/infraprime/dashboard/js/controle.js"></script>
 
 	<!-- SELECT2 TO FORMS
 	-->

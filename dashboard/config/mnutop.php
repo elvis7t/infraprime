@@ -23,11 +23,11 @@ $rs->GeraDados();
 	<header class="main-header"> 
 
         <!-- Logo -->
-        <a href="http://localhost/dashboard/view/index.php?token=<?=$_SESSION['token'];?>" class="logo">
+        <a href="http://localhost/infraprime/dashboard/view/index.php?token=<?=$_SESSION['token'];?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><img src="http://localhost/dashboard/<?=$_SESSION['logo'];?>" width="50"></span>
+          <span class="logo-mini"><img src="http://localhost/infraprime/dashboard/<?=$_SESSION['logo'];?>" width="50"></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><img src="http://localhost/dashboard/<?=$_SESSION['logo'];?>" width="50"></span>
+          <span class="logo-lg"><img src="http://localhost/infraprime/dashboard/<?=$_SESSION['logo'];?>" width="50"></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -46,10 +46,10 @@ $rs->GeraDados();
 					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
 						<?php  if(!isset($_SESSION['nome_usu'])):?>
-							<a href="http://localhost/dashboard/view/login.php">
+							<a href="http://localhost/infraprime/dashboard/view/login.php">
 						<?php  else :?>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="http://localhost/dashboard<?=$_SESSION['usu_foto'];?>" class="user-image" alt="User Image">
+								<img src="http://localhost/infraprime/dashboard/<?=$_SESSION['usu_foto'];?>" class="user-image" alt="User Image">
 								<?php  endif;?>
 								<span class="hidden-xs"><?=(isset($_SESSION['nome_usu'])? $_SESSION['nome_usu'] :'Login');?></span>
 							</a>
@@ -57,7 +57,7 @@ $rs->GeraDados();
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header">
-								<img src="http://localhost/dashboard<?=$_SESSION["usu_foto"];?>" class="img-circle" alt="User Image">
+								<img src="http://localhost/infraprime/dashboard/<?=$_SESSION["usu_foto"];?>" class="img-circle" alt="User Image">
 								<p>
 								<?=$_SESSION['nome_usu'];?>
 									<small><?=$_SESSION['usuario'];?></small>
@@ -66,10 +66,10 @@ $rs->GeraDados();
 								 <!-- Menu Footer-->
 							<li class="user-footer">								
 								<div class="pull-left">
-								  <a href="http://localhost/dashboard/view/sys_user_perfil.php?token=<?=$_SESSION['token'];?>&usuario=<?=$_SESSION['usu_cod'];?>" class="btn btn-default btn-flat">Perfil</a>
+								  <a href="http://localhost/infraprime/dashboard/view/sys_user_perfil.php?token=<?=$_SESSION['token'];?>&usuario=<?=$_SESSION['usu_cod'];?>" class="btn btn-default btn-flat">Perfil</a>
 								</div>
 								<div class="pull-right">
-								  <a href="http://localhost/dashboard/view/logout.php" class="btn btn-default btn-flat">Sair</a>
+								  <a href="http://localhost/infraprime/dashboard/view/logout.php" class="btn btn-default btn-flat">Sair</a>
 								</div>
 							</li>
 						</ul>

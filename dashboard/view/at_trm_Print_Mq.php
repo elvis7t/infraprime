@@ -65,7 +65,7 @@ $rs = new recordset();
 								<title>Empresa:</title>
 
 								</head>
-									<img src="http://localhost/dashboard/<?=$rs->fld('emp_img_trm');?>">
+									<img src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_img_trm');?>">
 								<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0>
 									 <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:26.5pt'>
 									<td >								 
@@ -262,7 +262,7 @@ $rs = new recordset();
 									<p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana",sans-serif;
 									color:black'><o:p>&nbsp;</o:p></span></p>
 									
-									<img src="http://localhost/dashboard/<?=$rs->fld('emp_img_trm');?>">
+									<img src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_img_trm');?>">
 									<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0>
 									 <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:26.5pt'>
 									<td >								 
@@ -397,7 +397,7 @@ $rs = new recordset();
 	
 
 
-		<script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+		<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
 	</body>
 </html>
 

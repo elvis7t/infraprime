@@ -160,22 +160,22 @@ $sql ="SELECT * FROM sys_mail
 	?> 
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
-<script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src="http://localhost/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="http://localhost/dashboard/assets/plugins/fastclick/fastclick.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/dashboard/assets/dist/js/demo.js"></script>
-<script src="http://localhost/dashboard/js/action_usuarios.js"></script>  <!--Chama o java script -->
+<script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
+<script src="http://localhost/infraprime/dashboard/js/action_usuarios.js"></script>  <!--Chama o java script -->
 <!-- iCheck -->
-<script src="http://localhost/dashboard/assets/plugins/iCheck/icheck.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/iCheck/icheck.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="http://localhost/dashboard/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 	<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <!-- SELECT2 TO FORMS --> 

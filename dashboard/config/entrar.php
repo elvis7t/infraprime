@@ -1,7 +1,7 @@
 <?php
 session_start();
-/*	ALTERA«√O -14/05/2016 - ELVIS LEITE
-	DATA NO PADR√O BR - HORARIO DE SP
+/*	ALTERA√á√ÉO -14/05/2016 - ELVIS LEITE
+	DATA NO PADR√ÉO BR - HORARIO DE SP
 */
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -14,7 +14,7 @@ extract($_POST);
 $arr = array();
 
 $rs = new recordset();
-//$hist = new historico(); // ser· necessario para o historico
+//$hist = new historico(); // ser√° necessario para o historico
 $whr = "usu_email = '".ltrim($usuario)."'";
 $rs->Seleciona("log_user","sys_logado","log_user ='".ltrim($usuario)."' AND log_status='1'");
 /*if($rs->linhas == 1){//se encontrou logado
@@ -40,7 +40,7 @@ $rs->Seleciona("log_user","sys_logado","log_user ='".ltrim($usuario)."' AND log_
 			$_SESSION['usu_departamento']	= $rs->fld("usu_dpId");
 			$_SESSION['usu_classe']			= $rs->fld("usu_classe");
 			$_SESSION['token']				= md5($codigo);
-			// Criadas as sessions, vamos incluir numa tabela de Logins Efetuados, para aumentar a seguranÁa
+			// Criadas as sessions, vamos incluir numa tabela de Logins Efetuados, para aumentar a seguran√ßa
 			/*
 			$altera = array("usu_online"=>1);
 			$whr = "usu_nome='".$usuario."'";
@@ -66,7 +66,7 @@ $rs->Seleciona("log_user","sys_logado","log_user ='".ltrim($usuario)."' AND log_
 			$arr["mensagem"]	= "Senha incorreta!";
 		}
 	}	
-		else{//se n„o encontrou o email
+		else{//se n√£o encontrou o email
 			$arr["status"] 		= "NO";
 			$arr["mensagem"]	= "E-mail n&atilde;o encontrado!";
 		}

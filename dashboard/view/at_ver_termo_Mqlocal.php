@@ -456,7 +456,7 @@ require_once("../class/class.functions.php");
 									<title></title>
 								</head>
 
-								<img src="http://localhost/dashboard/<?=$rs->fld('emp_img_trm');?>">
+								<img src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_img_trm');?>">
 								<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
 									 style='margin-left:3.5pt;border-collapse:collapse;border:none;mso-border-alt:
 									 solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt;
@@ -796,23 +796,23 @@ require_once("../class/class.functions.php");
 
 
 
-<script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
     <!-- Bootstrap 3.3.5 -->
 
-    <script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- FastClick -->
 
-    <script src="http://localhost/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
 
     <!-- AdminLTE App -->
 
-    <script src="http://localhost/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
 
     <!-- SlimScroll 1.3.0 -->
 
-    <script src="http://localhost/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 
 
 

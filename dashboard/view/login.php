@@ -52,12 +52,12 @@ echo "</pre>";
     </div><!-- /.login-box -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="http://localhost/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <!-- iCheck -->
-    <script src="http://localhost/dashboard/assets/plugins/iCheck/icheck.min.js"></script>
-	<script src="http://localhost/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://localhost/dashboard/js/login.js"></script>
+    <script src="http://localhost/infraprime/dashboard/assets/plugins/iCheck/icheck.min.js"></script>
+	<script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="http://localhost/infraprime/dashboard/js/login.js"></script>
 	<script>
     JQuery(document).ready(function(){
       $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
