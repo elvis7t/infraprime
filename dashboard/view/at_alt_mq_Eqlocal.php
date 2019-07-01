@@ -13,7 +13,6 @@ require_once("../config/menu.php");
 require_once("../config/modals.php");
 require_once("../class/class.functions.php");
 $fn = new functions();
-
 ?>
 
     <!-- Content Wrapper. Contains page content -->
