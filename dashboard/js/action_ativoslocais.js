@@ -82,7 +82,7 @@ $(document).ready(function(){
 				if(data.status=="OK"){
 					$("#confirma").modal("hide");
 					$("#aguarde").modal("show");
-					$(location).attr('href','at_departamentoslocais.php?token='+token); 
+					location.reload();
 				} 
 				else{
 					alert(data.mensagem);	
@@ -134,7 +134,9 @@ $(document).ready(function(){
 				acao:			"cadUsuarios",
 				sel_emp:	    $("#sel_emp").val(), 
 			    sel_dp:	    	$("#sel_dp").val(),
-				usu_nome:		$("#usu_nome").val()  
+				usu_nome:		$("#usu_nome").val(),
+				usu_chapa:		$("#usu_chapa").val(),  
+				usu_cargo:		$("#usu_cargo").val() 								
 			 
 				},function(data){
 					if (data.status == "OK") {
@@ -147,7 +149,7 @@ $(document).ready(function(){
 						$("<div></div>").addClass("alert alert-warning alert-dismissable").html('<i class="fa fa-warning"></i> Nome j&aacute; cadastrado <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#mens");
 					}
 					$("#btn_cadUsu").html("<i class='fa fa-save'></i> Salvar");
-				}, "json");
+				}, "json"); 
 			}
 		});
 /*---------------|FIM DO CADASTRO DE USUARIOS ATIVOS |------------------*/	
@@ -170,8 +172,11 @@ $(document).ready(function(){
 			$.post("../controller/sys_acao.php",{ 
 				acao: "Altera_usu",
 				usu_id: cod,
-				usu_dpId:  $("#usu_dpId").val(),      
+				sel_emp:   $("#sel_emp").val(),
+				sel_dp:    $("#sel_dp").val(),      
 				usu_nome:  $("#usu_nome").val(),
+				usu_chapa: $("#usu_chapa").val(),
+				usu_cargo: $("#usu_cargo").val(),
 				usu_ativo: $("input[name=usu_ativo]:checked").val()   
 				  
 			},
@@ -179,7 +184,7 @@ $(document).ready(function(){
 				if(data.status=="OK"){
 					$("#confirma").modal("hide");
 					$("#aguarde").modal("show");
-					$(location).attr('href','at_usuarioslocais.php?token='+token); 
+					location.reload(); 
 				} 
 				else{
 					alert(data.mensagem);	
@@ -1084,7 +1089,7 @@ $(document.body).on("click","#btn_cadMarca", function(){
 				eq_serial:    	$("#eq_serial").val(),  
 				sol_dp:     	$("#sol_dp").val(),  
 			    sol_usu:	   	$("#sol_usu").val(),  
-			    sol_mq: 	   	$("#sol_mq").val(),  
+			    sl_mq: 	     	$("#sol_mq").val(),  
 			    solic_ticket:  	$("#solic_ticket").val(), 
 			    solic_desc:	   	$("#solic_desc").val()  
 							 
@@ -2074,6 +2079,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 			    mq_valor:	     	$("#mq_valor").val(),
 			    mq_datacad:	     	$("#mq_datacad").val(),
 			    mq_datagar:	     	$("#mq_datagar").val(),
+				mq_mschave:	     	$("#mq_mschave").val(),
 				mq_licenca:			$("input[name=mq_licenca]:checked").val() 
 							 
 				},function(data){
@@ -2183,6 +2189,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 				mq_id: cod,
 				mq_nome:         $("#mq_nome").val(),
 				mq_tag:    		 $("#mq_tag").val(),
+				mq_mschave:    	 $("#mq_mschave").val(),
 				mq_proc:   		 $("#mq_proc").val(),
 				sel_mqmemoria:   $("#sel_mqmemoria").val(),
 				sel_mqhd:        $("#sel_mqhd").val(),

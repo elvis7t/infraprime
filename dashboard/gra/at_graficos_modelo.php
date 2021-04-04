@@ -1,6 +1,8 @@
 <?php
 $sess = "GRA";
 $pag = "at_graficos_float.php";
+
+require_once("../config/sessions.php");
 require_once("../config/main.php");
 require_once("../config/valida.php");
 require_once("../config/mnutop.php");
@@ -277,28 +279,28 @@ require_once("../model/recordset.php");
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-  <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+  <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://localhost/infraprime/dashboard/assets/plugins/morris/morris.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/morris/morris.min.js"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
 <!-- FLOT CHARTS -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
 <!-- Page script -->
 <script>
   $(function () {

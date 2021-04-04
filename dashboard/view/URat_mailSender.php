@@ -5,7 +5,6 @@ date_default_timezone_set('America/Sao_Paulo');
 //echo "<meta HTTP-EQUIV='refresh' CONTENT='5;URL=URat_mailSender.php'>";
 require_once("../model/recordset.php");
 //$hosted = "https://vilagalvao.16mb.com/dashboard";
-
 //echo $hosted;
 $rs=new recordset();
  
@@ -15,7 +14,8 @@ WHERE ims_enviado = 0";
 $rs->FreeSql($sql);
 if($rs->linhas == 0 ){
 	//echo "---------------------------Nao ha email para enviar--------------------------";
-	$fileLocation = "LOGS\MAIL_LOG.txt";
+	//$fileLocation = "LOGS\MAIL_LOG.txt";
+	$fileLocation = "MAIL_LOGs.txt";
 	$tant = file_get_contents($fileLocation);
 	$file = fopen($fileLocation,"w");
 	$content = $tant."\r\n[".date("d/m/Y H:i:s")."]";
@@ -55,11 +55,12 @@ else{
 		$nomeDestinatario = "INFRA_PRIME";
 		$usuario = "infraprimesystema@gmail.com";
 		$senha = "c0rp.@dm!n"; 
+		
+		//$usuario = "infraprime@niff.com.br";
+		//$senha = "Infr@pr!m3"; 
 		   
-		//$usuario = "elvist@bol.com.br";
-		//$senha = "silva777"; 
- 
-		//Arquivos (tÃ¡ aqui a pegadinha...) 
+		 
+		//Arquivos (tá aqui a pegadinha...) 
 		//Primeiro: Vamos fazer um array com o arquivos e seu respectivo nome
 		
 		$comp_arqs = array_combine($arqs, $narqs);
@@ -76,11 +77,12 @@ else{
  
 		//$Host = "smtps.bol.com.br"; 
 		$Host = 'smtp.gmail.com'; 
+		//$Host = 'webmail.niff.com.br'; 
 		//$Host = 'smtp.'.substr(strstr($usuario, '@'), 1);
 		$Username = $usuario;
 		$Password = $senha;
 		$Port = "587"; 
-
+   
 		$mail = new PHPMailer(); 
 		$body = $Message;
 		$mail->IsSMTP(); // telling the class to use SMTP
@@ -142,7 +144,8 @@ else{
 			$msg['erros'] = "Sem erros";
 		}
 
-		$fileLocation = "..\LOGS\MAIL_LOG.txt";
+		//$fileLocation = "..\LOGS\MAIL_LOG.txt";
+		$fileLocation = "MAIL_LOG.txt";
 		$tant = file_get_contents($fileLocation);
   		$file = fopen($fileLocation,"w");
   		$content = $tant."\r\n[".date("d/m/Y H:i:s")."] Enviado para {$rs->fld("ims_dest")} com sucesso!\n";

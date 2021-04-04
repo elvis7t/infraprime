@@ -1,7 +1,6 @@
 	<?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "SOL"; 
@@ -11,7 +10,6 @@ require_once("../config/main.php");
 require_once("../config/mnutop.php");  
 require_once("../config/menu.php");
 require_once("../config/modals.php");
-
 ?>
     <!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">

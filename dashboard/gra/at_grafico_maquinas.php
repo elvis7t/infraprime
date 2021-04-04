@@ -1,6 +1,7 @@
 <?php
 $sess = "GRA";
 $pag = "at_grafico_maquinas.php";
+require_once("../config/sessions.php");
 require_once("../config/main.php");
 require_once("../config/valida.php");
 require_once("../config/mnutop.php");
@@ -156,28 +157,28 @@ require_once("../model/recordset.php");
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-  <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+  <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://localhost/infraprime/dashboard/assets/plugins/morris/morris.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/morris/morris.min.js"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
 <!-- FLOT CHARTS -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
 <!-- Page script -->
 <!--  script  flot-->
 <script>
@@ -188,7 +189,7 @@ require_once("../model/recordset.php");
 
 
     var donutData = [
-      {label: "NIFF", data: <?=$mqniff;?>, color: "#00c0ef"},
+      {label: "SUPPORT", data: <?=$mqniff;?>, color: "#00c0ef"},
 	  {label: "EOVG", data: <?=$mqeovg;?>, color: "#f23e11"},
 	  {label: "VUG", data: <?=$mqvug;?>, color: "#1182f2"},
 	  {label: "LAVRAS", data: <?=$mqlavras;?>, color: "#f56954"},
@@ -249,7 +250,7 @@ require_once("../model/recordset.php");
       resize: true,
       colors: ['#00c0ef','#f23e11', '#1182f2','#f56954','#f27311','#00a65a','#f39c12','#3c8dbc','#d2d6de'],
       data: [
-        {label: 'NIFF', value: <?=$mqniff;?>},
+        {label: 'SUPPORT', value: <?=$mqniff;?>},
         {label: 'EOVG', value: <?=$mqeovg;?>},
         {label: 'VUG',  value: <?=$mqvug;?>}, 
         {label: 'LAV',  value: <?=$mqlavras;?>},
@@ -270,7 +271,7 @@ require_once("../model/recordset.php");
       element: 'bar-chart', 
       resize: true,
       data: [ 
-        {y: 'NIFF', a: <?=$mqniff;?>, },
+        {y: 'SUPPORT', a: <?=$mqniff;?>, },
         {y: 'EOVG', a: <?=$mqeovg;?>  },
         {y: 'VUG',  a: <?=$mqvug;?>   }, 
         {y: 'LAV',  a: <?=$mqlavras;?>},
@@ -302,7 +303,7 @@ require_once("../model/recordset.php");
         value: <?=$mqniff?>,
         color: "#00c0ef",
         highlight: "#00c0ef",
-        label: "NIFF"
+        label: "SUPPORT"
       },	
 		
       {

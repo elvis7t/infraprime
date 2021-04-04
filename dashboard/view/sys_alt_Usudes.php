@@ -13,7 +13,6 @@ require_once("../config/modals.php");
 require_once("../class/class.functions.php");
 $fn = new functions();
 $rs = new recordset();
-
 extract($_GET);
  				$rs = new recordset();
  				$sql ="SELECT * FROM sys_usuarios a
@@ -40,82 +39,83 @@ extract($_GET);
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-		  <h1>
-			Perfil
-		  </h1>
-		  <ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="#">Usu&aacute;rios</a></li> 
-			<li class="active">Perfil</li>
-		  </ol> 
+			<h1>
+				Perfil
+			</h1>
+			
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Usu&aacute;rios</a></li> 
+				<li class="active">Perfil</li>
+			</ol> 
 		</section>
 
 			<!-- Main content -->
-			<section class="content">
-		<div class="row">
+		<section class="content">
+			<div class="row">
 				<div class="col-md-3"> <!-- left menu-->
 				  <!-- Profile Image -->
-				  <div class="box box-primary">
+					<div class="box box-primary">
 						<div class="box-body box-profile">
-						  <img class="profile-user-img img-responsive img-circle" src="http://localhost/infraprime/dashboard<?=$rs->fld('usu_foto');?>" alt="User profile picture">
-						  <h3 class="profile-username text-center"><?=$rs->fld('usu_nome');?></h3>
-						  <p class="text-muted text-center"><?=$rs->fld('dp_nome');?></p>
+						   <img class="profile-user-img img-responsive img-circle" src="<?=$hosted;?>/dashboard<?=$rs->fld('usu_foto');?>" alt="User profile picture">
+						   <h3 class="profile-username text-center"><?=$rs->fld('usu_nome');?></h3>
+						   <p class="text-muted text-center"><?=$rs->fld('dp_nome');?></p>
 						</div><!-- /.box-body -->
-				  </div><!-- /.box -->
+					</div><!-- /.box -->
 
 					  <!-- About Me Box -->
-						<div class="box box-primary">
-							<div class="box-header with-border">
+					<div class="box box-primary">
+						<div class="box-header with-border">
 							<h3 class="box-title">Sobre</h3>
-							</div><!-- /.box-header -->
+						</div><!-- /.box-header -->
+						
+						<div class="box-body">
+							<!--<strong><i class="fa fa-birthday-cake margin-r-5"></i>  Nascimento</strong>
+								<p class="text-muted">
+									<?=$fn->data_br($rs->fld('dados_nasc'));?>
+								</p>
+							<hr>
+						  <strong><i class="fa fa-graduation-cap margin-r-5"></i>  Forma&ccedil;&atilde;o</strong>
+								<p class="text-muted">
+								  <?=$rs->fld('dados_escol');?>
+								</p>
+							<hr>-->
 							
-							<div class="box-body">
-								<strong><i class="fa fa-birthday-cake margin-r-5"></i>  Nascimento</strong>
-									<p class="text-muted">
-										<?=$fn->data_br($rs->fld('dados_nasc'));?>
-									</p>
-								<hr>
-							  <strong><i class="fa fa-graduation-cap margin-r-5"></i>  Forma&ccedil;&atilde;o</strong>
-									<p class="text-muted">
-									  <?=$rs->fld('dados_escol');?>
-									</p>
-								<hr>
-								
-							  <strong><i class="fa fa-address-card margin-r-5"></i> Contato</strong>
-								 <p class="text-muted">
+						  <strong><i class="fa fa-address-card margin-r-5"></i> Contato</strong>
+							 <p class="text-muted">
+								<adress>
+								  <?php
+									 echo $rs->fld('dados_tel').", Ramal ".$rs->fld('dados_ramal')."<br>";
+									 echo $rs->fld('dados_cel')."<br>";									 
+								  ?>
+								  <a href="mailto:<?=$rs->fld('dados_usu_email')?>"><?=$rs->fld('dados_usu_email')?></a><br>
+								</adress>  
+							</p>
+						  <hr>
+						  
+						  <!--<strong><i class="fa fa-map-marker margin-r-5"></i> Endere&ccedil;o</strong>
+							  <p class="text-muted">
 									<adress>
 									  <?php
-										 echo $rs->fld('dados_tel').", Ramal ".$rs->fld('dados_ramal')."<br>";
-										 echo $rs->fld('dados_cel')."<br>";									 
+										 echo $rs->fld('dados_rua').", ".$rs->fld('dados_num')." ".$rs->fld('dados_compl')."<br>";
+										 echo $rs->fld('dados_bairro')." - ".$rs->fld('dados_cidade')." - ".$rs->fld('dados_uf')."<br> CEP: ".$rs->fld('dados_cep');
 									  ?>
-									  <a href="mailto:<?=$rs->fld('dados_usu_email')?>"><?=$rs->fld('dados_usu_email')?></a><br>
 									</adress>  
-								</p>
-							  <hr>
-							  
-							  <strong><i class="fa fa-map-marker margin-r-5"></i> Endere&ccedil;o</strong>
-								  <p class="text-muted">
-										<adress>
-										  <?php
-											 echo $rs->fld('dados_rua').", ".$rs->fld('dados_num')." ".$rs->fld('dados_compl')."<br>";
-											 echo $rs->fld('dados_bairro')." - ".$rs->fld('dados_cidade')." - ".$rs->fld('dados_uf')."<br> CEP: ".$rs->fld('dados_cep');
-										  ?>
-										</adress>  
-								  </p>
-							  <hr>
-							  <strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
-							  <p>
-								<?php 
-								$estilos = array("danger","success","info","warning","primary");
-								$skills = explode(";",$rs->fld('dados_habil'));
-								foreach($skills as $ch => $vl){ ?>
-								  <span class="label label-<?=$estilos[$ch];?>"><?=$vl;?></span>
-								<?php  
-								}
-								?>
-							  </p>							  
-							</div><!-- /.box-body -->
-						</div><!-- /.box -->
+							  </p>
+						  <hr>-->
+						  <strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
+						  <p>
+							<?php 
+							$estilos = array("danger","success","info","warning","primary");
+							$skills = explode(";",$rs->fld('dados_habil'));
+							foreach($skills as $ch => $vl){ ?>
+							  <span class="label label-<?=$estilos[$ch];?>"><?=$vl;?></span>
+							<?php  
+							}
+							?>
+						  </p>							  
+						</div><!-- /.box-body -->
+					</div><!-- /.box -->
 				</div><!-- /.left menu -->
 				
 				<div class="col-md-9"><!-- center menu -->
@@ -203,21 +203,21 @@ extract($_GET);
 									</div><!-- /.row -->
 									
 									<div class="row"> 
-													<?php
-													$rs = new recordset();
-													$sql ="SELECT * FROM sys_usuarios a
-														JOIN sys_classe b ON a.usu_classe = b.classe_id 
-														JOIN at_empresas c ON a.usu_empId = c.emp_id
-														JOIN at_departamentos d ON a.usu_dpId = d.dp_id 
-														JOIN sys_dados_user   e ON a.usu_email = e.dados_usu_email
-													WHERE usu_cod = ".$usucod;
-													$rs->FreeSql($sql);
-													$rs->GeraDados();												
-													?>	
-												  <div class="form-group col-md-3">
-													<label from="lbl_senhaatual">Nova Senha</label>
-													<input type="password" class="form-control" id="usu_senha" name="usu_senha"  value="<?=$rs->fld("usu_senha");?>">
-												  </div>
+										<?php
+										$rs = new recordset();
+										$sql ="SELECT * FROM sys_usuarios a
+											JOIN sys_classe b ON a.usu_classe = b.classe_id 
+											JOIN at_empresas c ON a.usu_empId = c.emp_id
+											JOIN at_departamentos d ON a.usu_dpId = d.dp_id 
+											JOIN sys_dados_user   e ON a.usu_email = e.dados_usu_email
+										WHERE usu_cod = ".$usucod;
+										$rs->FreeSql($sql);
+										$rs->GeraDados();												
+										?>	
+										<div class="form-group col-md-3">
+										  <label from="lbl_senhaatual">Nova Senha</label>
+											<input type="password" class="form-control" id="usu_senha" name="usu_senha"  value="<?=$rs->fld("usu_senha");?>">
+										</div>
 								
 									</div><!-- /.row -->				
 								</div>
@@ -230,7 +230,7 @@ extract($_GET);
 							</div>
 							
 							<div class="box box-solid">
-							<?php
+								<?php
 									$sql ="SELECT * FROM mq_manutencao
 									WHERE man_usucad =".$usucod;  
 									$rs->FreeSql($sql);
@@ -248,19 +248,16 @@ extract($_GET);
 									$rs->FreeSql($sql);
 									while($rs->GeraDados()){}
 									$equipamentos = $rs->linhas; 
-									
-									
-
-									?>
+								?>
 								<div class="box-header">
 								  <i class="fa fa-bar-chart-o"></i>
 								  <h3 class="box-title">Suporte</h3>
-								  <div class="box-tools pull-right">
-									<button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-									</button>
-									<button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-									</button>
-								  </div>
+									<div class="box-tools pull-right">
+										<button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+										</button>
+									</div>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
@@ -271,7 +268,6 @@ extract($_GET);
 												<div class="info-box-content">
 													<span class="info-box-text">Atendimentos</span>
 													<span class="info-box-number"><?=$atendimentos;?></span>
-
 													<div class="progress">
 														<div class="progress-bar" style="width: <?=$atendimentos;?>%"></div>
 													</div>												  
@@ -324,97 +320,97 @@ extract($_GET);
 						<div class="tab-pane" id="tab_2">
 							<div class="box box-primary">
 								<div class="box-body">
-										<form role="form" id="alt_dados_perfil">
-										  <div class="input-group col-md-12">
-												<div class="row">
-													<?php
-													$rs = new recordset();
-													$sql ="SELECT * FROM sys_usuarios a
-														JOIN sys_classe b ON a.usu_classe = b.classe_id 
-														JOIN at_empresas c ON a.usu_empId = c.emp_id
-														JOIN at_departamentos d ON a.usu_dpId = d.dp_id 
-														JOIN sys_dados_user   e ON a.usu_email = e.dados_usu_email
-													WHERE usu_cod = ".$usucod;
-													$rs->FreeSql($sql);
-													
-													$rs->GeraDados();
-													$usu_cod = $rs->fld("usu_cod");
-													
-													?>
-													<div class="form-group col-xs-2">
-													  <label for="emp_uf">Nascimento</label>
-													  <input class="form-control data_br"  id="data" placeholder="Data" value="<?=$fn->data_br($rs->fld("dados_nasc"));?>" <?=$disable; ?>>
-													</div>
-													 <div class="form-group col-xs-5">
-													  <label for="emp_bai">Forma&ccedil;&atilde;o</label>
-													  <input class="form-control input-sm text-uppercase"  id="escol" placeholder="Forma&ccedil;&atilde;o" value="<?=$rs->fld("dados_escol");?>" <?=$disable; ?>>
-													</div>
-													
-												</div><!-- /.row -->
-									
-												<div class="row">
-													
-													<div class="form-group col-xs-2">
-													<label for="usu_tel">Telefone</label> 
-														<input type="text" class="form-control fone" id="usu_tel" name="usu_tel" value="<?=$rs->fld("dados_tel");?>" <?=$disable; ?> >
-													</div>
-														
-													<div class="form-group col-xs-2">
-													<label for="usu_ramal">Ramal</label> 
-														<input type="text" class="form-control" id="usu_ramal" name="usu_ramal" value="<?=$rs->fld("dados_ramal");?>" <?=$disable; ?> >
-													</div>
-														
-													<div class="form-group col-xs-3">
-													<label for="usu_cel">Celular</label> 
-														<input type="text" class="form-control cel" id="usu_cel" name="usu_cel" value="<?=$rs->fld("dados_cel");?>" <?=$disable; ?> >
-													</div>
-													
-													<input type="hidden" class="form-control input-sm" readonly id="usu_email" placeholder="email" value="<?=$rs->fld("usu_email");?>">
-													
-												</div><!-- /.row -->
-									
-												<div class="row">		
-													<div class="form-group col-xs-3">
-													  <label for="emp_cep">CEP</label>
-													  <input class="form-control input-sm"  id="cep" placeholder="CEP" value="<?=$rs->fld("dados_cep");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-5">
-													  <label for="emp_log">Logradouro</label>
-													  <input class="form-control input-sm text-uppercase"  id="log" placeholder="Logradouro" value="<?=$rs->fld("dados_rua");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-2">
-													  <label for="emp_num">N&uacute;mero</label>
-													  <input class="form-control input-sm" id="num"  placeholder="Num.:" value="<?=$rs->fld("dados_num");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-2">
-													  <label for="emp_comp">Complemento</label>
-													  <input class="form-control input-sm text-uppercase"  id="compl" placeholder="Compl.:" value="<?=$rs->fld("dados_compl");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-5">
-													  <label for="emp_bai">Bairro</label>
-													  <input class="form-control input-sm text-uppercase"  id="bai" placeholder="Bairro" value="<?=$rs->fld("dados_bairro");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-5">
-													  <label for="emp_cid">Cidade</label>
-													  <input class="form-control input-sm text-uppercase"  id="cid" placeholder="Cidade" value="<?=$rs->fld("dados_cidade");?>" <?=$disable; ?>>
-													</div>
-													<div class="form-group col-xs-2">
-													  <label for="emp_uf">UF</label>
-													  <input class="form-control input-sm text-uppercase" id="uf" placeholder="UF" value="<?=$rs->fld("dados_uf");?>" <?=$disable; ?>>
-													</div>
-												</div><!-- /.row -->
+									<form role="form" id="alt_dados_perfil">
+									  <div class="input-group col-md-12">
+											<!--<div class="row">
+												<?php
+												$rs = new recordset();
+												$sql ="SELECT * FROM sys_usuarios a
+													JOIN sys_classe b ON a.usu_classe = b.classe_id 
+													JOIN at_empresas c ON a.usu_empId = c.emp_id
+													JOIN at_departamentos d ON a.usu_dpId = d.dp_id 
+													JOIN sys_dados_user   e ON a.usu_email = e.dados_usu_email
+												WHERE usu_cod = ".$usucod;
+												$rs->FreeSql($sql);
 												
-												<div id="formerros_senha" class="" style="display:none;">
-												  <div class="callout callout-danger">
-													<h4>Erros no preenchimento do formul&aacute;rio.</h4>
-													<p>Verifique os erros no preenchimento acima:</p>
-													<ol>
-													  <!-- Erros são colocados aqui pelo validade -->
-													</ol>
-												  </div>
-												</div>  
-											  <div id="consulta2"></div>
-										</form>
+												$rs->GeraDados();
+												$usu_cod = $rs->fld("usu_cod");
+												
+												?>
+												<div class="form-group col-xs-2">
+												  <label for="emp_uf">Nascimento</label>
+												  <input class="form-control data_br"  id="data" placeholder="Data" value="<?=$fn->data_br($rs->fld("dados_nasc"));?>" <?=$disable; ?>>
+												</div>
+												 <div class="form-group col-xs-5">
+												  <label for="emp_bai">Forma&ccedil;&atilde;o</label>
+												  <input class="form-control input-sm text-uppercase"  id="escol" placeholder="Forma&ccedil;&atilde;o" value="<?=$rs->fld("dados_escol");?>" <?=$disable; ?>>
+												</div>
+												
+											</div><!-- /.row -->
+								
+											<div class="row">
+												
+												<div class="form-group col-xs-2">
+												<label for="usu_tel">Telefone</label> 
+													<input type="text" class="form-control fone" id="usu_tel" name="usu_tel" value="<?=$rs->fld("dados_tel");?>" <?=$disable; ?> >
+												</div>
+													
+												<div class="form-group col-xs-2">
+												<label for="usu_ramal">Ramal</label> 
+													<input type="text" class="form-control" id="usu_ramal" name="usu_ramal" value="<?=$rs->fld("dados_ramal");?>" <?=$disable; ?> >
+												</div>
+													
+												<div class="form-group col-xs-3">
+												<label for="usu_cel">Celular</label> 
+													<input type="text" class="form-control cel" id="usu_cel" name="usu_cel" value="<?=$rs->fld("dados_cel");?>" <?=$disable; ?> >
+												</div>
+												
+												<input type="hidden" class="form-control input-sm" readonly id="usu_email" placeholder="email" value="<?=$rs->fld("usu_email");?>">
+												
+											</div><!-- /.row -->
+								
+										<!--<div class="row">		
+												<div class="form-group col-xs-3">
+												  <label for="emp_cep">CEP</label>
+												  <input class="form-control input-sm"  id="cep" placeholder="CEP" value="<?=$rs->fld("dados_cep");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-5">
+												  <label for="emp_log">Logradouro</label>
+												  <input class="form-control input-sm text-uppercase"  id="log" placeholder="Logradouro" value="<?=$rs->fld("dados_rua");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-2">
+												  <label for="emp_num">N&uacute;mero</label>
+												  <input class="form-control input-sm" id="num"  placeholder="Num.:" value="<?=$rs->fld("dados_num");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-2">
+												  <label for="emp_comp">Complemento</label>
+												  <input class="form-control input-sm text-uppercase"  id="compl" placeholder="Compl.:" value="<?=$rs->fld("dados_compl");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-5">
+												  <label for="emp_bai">Bairro</label>
+												  <input class="form-control input-sm text-uppercase"  id="bai" placeholder="Bairro" value="<?=$rs->fld("dados_bairro");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-5">
+												  <label for="emp_cid">Cidade</label>
+												  <input class="form-control input-sm text-uppercase"  id="cid" placeholder="Cidade" value="<?=$rs->fld("dados_cidade");?>" <?=$disable; ?>>
+												</div>
+												<div class="form-group col-xs-2">
+												  <label for="emp_uf">UF</label>
+												  <input class="form-control input-sm text-uppercase" id="uf" placeholder="UF" value="<?=$rs->fld("dados_uf");?>" <?=$disable; ?>>
+												</div>
+											</div><!-- /.row -->
+											
+											<div id="formerros_senha" class="" style="display:none;">
+											  <div class="callout callout-danger">
+												<h4>Erros no preenchimento do formul&aacute;rio.</h4>
+												<p>Verifique os erros no preenchimento acima:</p>
+												<ol>
+												  <!-- Erros são colocados aqui pelo validade -->
+												</ol>
+											  </div>
+											</div>  
+										  <div id="consulta2"></div>
+									</form>
 									</div><!-- /.box-body -->
 									<div class="box-footer">
 										<button id="bt_altera_perfil" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Alterar Dados </button>
@@ -465,92 +461,91 @@ extract($_GET);
 					</div><!-- nav-tabs-custom -->
 				</div><!-- /.center menu -->
 			</section><!-- ./section -->
-		</div><!-- ./row -->
+		</div><!-- ./row -->		
 		
-		<?php
-		require_once("../config/footer.php");
-		?>
-	</div><!-- ./wrapper -->
+		<?php require_once("../config/footer.php");?>
+	
+</div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 --> 
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
-	<!-- jQuery Knob -->
-	<script src="http://localhost/infraprime/dashboard/assets/plugins/knob/jquery.knob.js"></script>    
-    <!--AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
-    <!-- Sparkline -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
-	<!--datatables-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>    
-     <!-- ChartJS 1.0.1-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) 
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
-    <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>	
-	<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
-	<script src="http://localhost/infraprime/dashboard/js/action_usuarios.js"></script>  <!--Chama o java script para mascara -->
-	<script src="http://localhost/infraprime/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara e CEP AUTOMATICO -->
-	<!-- Validation --> 
-	<!-- SELECT2 TO FORMS --> 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-	<script>
-	  
-	/*------------------------|INICIA TOOLTIPS E POPOVERS|---------------------------------------*/
-	$(document).ready(function () {
-		$(".select2").select2({
-			tags: true,
-			theme: "classic"
-		});
+<!-- jQuery 2.1.4 --> 
+<script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+<!-- jQuery Knob -->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/knob/jquery.knob.js"></script>    
+<!--AdminLTE App -->
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
+<!-- Sparkline -->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/js/maskinput.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/js/jmask.js"></script>
+<!--datatables-->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>    
+ <!-- ChartJS 1.0.1-->
+<script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) 
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>	
+<script src="<?=$hosted;?>/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
+<script src="<?=$hosted;?>/dashboard/js/action_usuarios.js"></script>  <!--Chama o java script para mascara -->
+<script src="<?=$hosted;?>/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara e CEP AUTOMATICO -->
+<!-- Validation --> 
+<!-- SELECT2 TO FORMS --> 
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+  
+/*------------------------|INICIA TOOLTIPS E POPOVERS|---------------------------------------*/
+$(document).ready(function () {
+	$(".select2").select2({
+		tags: true,
+		theme: "classic"
 	});
+});
 </script>
 <script>
-		$(function () {
-		$('#manutencao').DataTable({
-		"columnDefs": [{
-		"defaultContent": "-",
-		"targets": "_all"
-	}],
-	language :{
-	    "sEmptyTable": "Nenhum registro encontrado",
-	    "sInfo": "Mostrando de _START_ at&eacute; _END_ de _TOTAL_ registros",  
-	    "sInfoEmpty": "Mostrando 0 at&eacute; 0 de 0 registros",
-	    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-	    "sInfoPostFix": "",
-	    "sInfoThousands": ".",
-	    "sLengthMenu": "_MENU_ resultados por p&aacute;gina",
-	    "sLoadingRecords": "Carregando...",
-	    "sProcessing": "Processando...",
-	    "sZeroRecords": "Nenhum registro encontrado",
-	    "sSearch": "Pesquisar",
-	    "oPaginate": {
-	        "sNext": "Pr&oacute;ximo",
-	        "sPrevious": "Anterior", 
-	        "sFirst": "Primeiro",
-	        "sLast": "&Uacute;ltimo"   
-	    },
-	    "oAria": {
-	        "sSortAscending": ": Ordenar colunas de forma ascendente",
-	        "sSortDescending": ": Ordenar colunas de forma descendente"
-	    }
+	$(function () {
+	$('#manutencao').DataTable({
+	"columnDefs": [{
+	"defaultContent": "-",
+	"targets": "_all"
+}],
+language :{
+	"sEmptyTable": "Nenhum registro encontrado",
+	"sInfo": "Mostrando de _START_ at&eacute; _END_ de _TOTAL_ registros",  
+	"sInfoEmpty": "Mostrando 0 at&eacute; 0 de 0 registros",
+	"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+	"sInfoPostFix": "",
+	"sInfoThousands": ".",
+	"sLengthMenu": "_MENU_ resultados por p&aacute;gina",
+	"sLoadingRecords": "Carregando...",
+	"sProcessing": "Processando...",
+	"sZeroRecords": "Nenhum registro encontrado",
+	"sSearch": "Pesquisar",
+	"oPaginate": {
+		"sNext": "Pr&oacute;ximo",
+		"sPrevious": "Anterior", 
+		"sFirst": "Primeiro",
+		"sLast": "&Uacute;ltimo"   
+	},
+	"oAria": {
+		"sSortAscending": ": Ordenar colunas de forma ascendente",
+		"sSortDescending": ": Ordenar colunas de forma descendente"
 	}
+}
+});
 	});
-		});
+
 	
-		
-	</script>
+</script>
 </body>
 </html>	

@@ -11,9 +11,7 @@ error_reporting(E_ALL & E_NOTICE & E_WARNING);
 $arquivo = 'relatorio.xls';
 require_once("../config/main.php");
 require_once("../model/recordset.php");
-require_once("../class/class.functions.php");
-
- 
+require_once("../class/class.functions.php"); 
 $rs = new recordset();
 $func = new functions();
 
@@ -27,18 +25,10 @@ extract($_GET);
 			JOIN mq_os              g ON a.mq_osId     = g.os_id
 			JOIN at_usuarios        h ON a.mq_usuId    = h.usu_id
 			JOIN at_departamentos	i ON a.mq_dpId     = i.dp_id
-			JOIN mq_office			j ON a.mq_officeId = j.office_id
-			 
-		WHERE mq_ativo <> 1 AND mq_empId =".$emp;    
+			JOIN mq_office			j ON a.mq_officeId = j.office_id			 
+		WHERE mq_ativo ='1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId =".$emp;    	
 	
-	
-	
-	$sql.=" ORDER BY emp_alias  "; 
-	
-	
-	 
-	
-	
+	$sql.=" ORDER BY emp_alias  "; 	
 	$rs->FreeSql($sql);
 	/*echo $rs->sql;*/
 	$trtbl = "";
@@ -48,13 +38,8 @@ extract($_GET);
 	}
 	else{ 
 	$li="Open";
-	}
-					
-					
-					
-					
-	$trtbl .= '
-	
+	}					
+	$trtbl .= '	
 	<tr>
 		<td>'.$rs->fld("emp_alias").'</td>
 		<td>'.$rs->fld("dp_nome").'</td>
@@ -68,8 +53,7 @@ extract($_GET);
 		<td>'.$rs->fld("office_desc").'</td>
 		<td>'.$func->data_br($rs->fld("mq_datacad")).'</td>
 		<td>'.$func->data_br($rs->fld("mq_datagar")).'</td>
-		<td>'.$li.'</td> 
-			
+		<td>'.$li.'</td> 			
 	</tr>';
 	endwhile;
 	$trtbl.="<tr><td><strong>".$rs->linhas." Registros</strong></td></tr>";
@@ -77,57 +61,57 @@ extract($_GET);
 
 // Criamos uma tabela HTML com o formato da planilha
 $html = '
-			<section class="invoice">
-				<!-- title row -->
-				<div class="row">
-				  <div class="col-xs-12">
-					<h2 class="page-header">
-						<i class="fa fa-globe"></i>'.$rs->pegar("emp_nome","at_empresas","emp_id = '".$_SESSION['usu_empresa']."'").'
-						<small class="pull-right">Data: '.date("d/m/Y").'</small>
-					</h2>
-				  </div><!-- /.col -->
-				</div>
-				<!-- info row -->
-				<div class="row invoice-info">
-					<div class="col-sm-4 invoice-col">
-						Usu&aacute;rio
-						<address>
-							<strong>'.$_SESSION['nome_usu'].'</strong><br>
-							<i class="fa fa-envelope"></i> '.$_SESSION['usuario'].'
-						</address>
-					</div><!-- /.col -->
-				</div><!-- /.row -->
+	<section class="invoice">
+		<!-- title row -->
+		<div class="row">
+		  <div class="col-xs-12">
+			<h2 class="page-header">
+				<i class="fa fa-globe"></i>'.$rs->pegar("emp_nome","at_empresas","emp_id = '".$_SESSION['usu_empresa']."'").'
+				<small class="pull-right">Data: '.date("d/m/Y").'</small>
+			</h2>
+		  </div><!-- /.col -->
+		</div>
+		<!-- info row -->
+		<div class="row invoice-info">
+			<div class="col-sm-4 invoice-col">
+				Usu&aacute;rio
+				<address>
+					<strong>'.$_SESSION['nome_usu'].'</strong><br>
+					<i class="fa fa-envelope"></i> '.$_SESSION['usuario'].'
+				</address>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
 
-				<!-- Table row -->
-				<div class="row">
-					<div class="col-xs-12 table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr><th colspan=7><h2>Relat&oacute;rio de M&aacute;quinas Ativas</h2></th></tr>
-									  <tr> 
-										
-										<th>Empresa</th> 
-										<th>Departamento</th> 
-										<th>Usu&aacute;rio</th>
-										<th>Nome</th>
-										<th>Fabricante</th>
-										<th>Tipo</th>
-										<th>Modelo</th>
-										<th>Status</th>
-										<th>Sitema</th> 
-										<th>Office</th> 
-										<th>Comprado</th>
-										<th>Garantia</th>
-										<th>Licen&ccedil;a</th> 
-								</tr>
-							</thead>
-							<tbody id="rls">
-								'.$trtbl.'
-							</tbody>
-						</table>
-					</div><!-- /.col -->
-				</div><!-- /.row -->
-			</section><!-- /.content -->
+		<!-- Table row -->
+		<div class="row">
+			<div class="col-xs-12 table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr><th colspan=7><h2>Relat&oacute;rio de M&aacute;quinas Ativas</h2></th></tr>
+							  <tr> 
+								
+								<th>Empresa</th> 
+								<th>Departamento</th> 
+								<th>Usu&aacute;rio</th>
+								<th>Nome</th>
+								<th>Fabricante</th>
+								<th>Tipo</th>
+								<th>Modelo</th>
+								<th>Status</th>
+								<th>Sitema</th> 
+								<th>Office</th> 
+								<th>Comprado</th>
+								<th>Garantia</th>
+								<th>Licen&ccedil;a</th> 
+						</tr>
+					</thead>
+					<tbody id="rls">
+						'.$trtbl.'
+					</tbody>
+				</table>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</section><!-- /.content -->
 ';
 
 // Configurações header para forçar o download

@@ -1,7 +1,6 @@
 <?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "ATIVO";
@@ -13,7 +12,6 @@ require_once("../config/menu.php");
 require_once("../config/modals.php");
 require_once("../class/class.functions.php"); 
 $fn = new functions();
-
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -52,10 +50,10 @@ $fn = new functions();
  				$rs->GeraDados();
 				
 				
-				$mq_id       = $rs->fld("mq_id");
-				$var = $rs->fld("emp_id");
-				$usu = $rs->fld("usu_nome");
-				$dp_id = $rs->fld("dp_id");
+				$mq_id       	= $rs->fld("mq_id");
+				$var 		 	= $rs->fld("emp_id");
+				$usu 		 	= $rs->fld("usu_nome");
+				$dp_id 		    = $rs->fld("dp_id");
  				$status_id      = $rs->fld("status_id");  
 				$status_classe  = $rs->fld("status_classe");  
 				$status_desc    = $rs->fld("status_desc");
@@ -266,10 +264,10 @@ $fn = new functions();
 										<label for="empre_datade">Emprestado em:</label> 
 										<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-calendar-check-o"></i>
+											<i class="fa fa-calendar"></i>
 										</div>
 										
-										<input type="text"  class="form-control data_br" id="empre_datade" name="empre_datade"  value="">
+										<input type="text"  class="form-control" id="empre_datade" name="empre_datade"  value="">
 									</div>
 									</div>
 																			
@@ -348,35 +346,42 @@ $fn = new functions();
  
     </div><!-- ./wrapper --> 
 
-    <!-- jQuery 2.1.4 --> 
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+     <!-- jQuery 2.1.4 --> 
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+	<!-- FastClick -->
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!--AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
     <!-- Sparkline -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/daterangepicker/daterangepicker.js"></script>
+	<!-- bootstrap datepicker -->
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+	<!-- bootstrap time picker -->
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/js/maskinput.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/js/jmask.js"></script>
     <!--datatables-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
       <!-- ChartJS 1.0.1-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) 
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
-	<script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>  <!--Chama o java script -->
-	<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
-	<script src="http://localhost/infraprime/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
+	<script src="<?=$hosted;?>/dashboard/js/action_ativos.js"></script>  <!--Chama o java script -->
+	<script src="<?=$hosted;?>/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
+	<script src="<?=$hosted;?>/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
 	<!-- Validation --> 
 	<!-- SELECT2 TO FORMS --> 
 
@@ -431,7 +436,11 @@ $fn = new functions();
 	});
 		});
 	
-		
+	//Date picker
+    $('#empre_datade').datepicker({
+      format: 'dd/mm/yyyy',                
+    language: 'pt-BR'
+    });	
 	</script>
   </body>
 </html> 

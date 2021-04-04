@@ -10,7 +10,7 @@
 				?>
 	<footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 5.0 | <img src="http://localhost/infraprime/dashboard/images/logoCREone.png" width="100"/>
+          <b>Version</b> 5.0 | <img src="http://www.niff.com.br/infraprime/dashboard/images/logoCREone.png" width="100"/>
 	</div>
 	<strong>Licenciado para <a href="<?=$site;?>"> <?=$empresas;?></a></strong> <?=date("Y");?>  Todos os Direitos Reservados. 
 </footer>   

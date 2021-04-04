@@ -1,4 +1,6 @@
 <?php
+//sujeira embaixo do tapete :(
+error_reporting(E_ALL & E_NOTICE & E_WARNING);
 require_once("../model/recordset.php");
 class functions extends recordset{
 	var $link;
@@ -270,7 +272,7 @@ class functions extends recordset{
     }
  
  	function formata_din($num){
-		return "R$".number_format($num, 2,",",".");
+		return "R$".number_format($num,2,",",".");
 	} 
     /**
      * Calcula a diferença em horas comerciais entre a primeira e a segunda data passadas como parâmetro

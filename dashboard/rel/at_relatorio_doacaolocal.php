@@ -31,73 +31,62 @@ $rs = new recordset();
         </section>
 
         <!-- Main content -->
-        <section class="content">
+		<section class="content">
 			<!-- Info boxes -->
 			<div class="row"> 
 				<!-- left column -->
-				<div class="col-md-12"> 
-				<!-- general form elements -->
-					
-				<!-- general form elements --> 
-				<div class="box box-success"> 
-					<div class="box-header with-border">
-						<h3>
-							<i class="fa fa-globe"></i>  Relat&oacute;rios de Doa&ccedil;&otilde;es por Institui&ccedil;&atilde;o<small class="pull-right">Data: <?=date("d/m/Y");?></small></h3><div class="box-tools pull-right">
-		                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>    
-						</div> 
-					</div><!-- /.box-header -->
-					<!-- form start -->
-					<div class="box-body">
-						<table id="fabricante" class="table table-bordered table-striped">
-							<thead>
-								  <tr>
-										<th>C&oacute;d:</th>
-										<th>Descri&ccedil;&atilde;o</th>     
-										<th>Apelido</th> 
-										<th>CNPJ</th> 
-										<th>Relat&oacute;rio</th>
-								  </tr>
-							</thead>
-							<tbody id="Mq_cad">  
-								<?php require_once("at_tbReldoacaolocal.php");?>   
-							</tbody> 
-							 
-						</table> 
-					</div><!-- /.box-body --> 
-					<div class="box-footer">
-				
-			</div>
-							
-              </div><!-- /.box --> 
-			
-          </div>
-        </section><!-- /.content --> 
-	</div>
-	
-	<?php
-		require_once("../config/footer.php");
-	?></div><!-- ./wrapper -->
+				<div class="col-md-12"> 				
+					<!-- general form elements --> 
+					<div class="box box-success"> 
+						<div class="box-header with-border">
+							<h3>
+								<i class="fa fa-globe"></i>  Relat&oacute;rios de Doa&ccedil;&otilde;es por Institui&ccedil;&atilde;o<small class="pull-right">Data: <?=date("d/m/Y");?></small></h3><div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>    
+							</div> 
+						</div><!-- /.box-header -->
+						<!-- form start -->
+						<div class="box-body">
+							<table id="fabricante" class="table table-bordered table-striped">
+								<thead>
+									  <tr>
+											<th>C&oacute;d:</th>
+											<th>Descri&ccedil;&atilde;o</th>     
+											<th>Apelido</th> 
+											<th>CNPJ</th> 
+											<th>Relat&oacute;rio</th>
+									  </tr>
+								</thead>
+								<tbody id="Mq_cad">  
+									<?php require_once("at_tbReldoacaolocal.php");?>   
+								</tbody> 
+								 
+							</table> 
+						</div><!-- /.box-body --> 
+						<div class="box-footer">			
+						</div>							
+					</div><!-- /.box --> 			
+				</div><!-- /.box --> 			
+			</div><!-- /.box --> 			
+		</section><!-- /.content --> 
+		<?php require_once("../config/footer.php");?>
+	</div><!-- ./wrapper -->
 
-<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
    <!-- Slimscroll -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
-    <script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/jquery.cookie.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/controle.js"></script>
-
-	<!-- SELECT2 TO FORMS
-	-->
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/action_ativos.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/jquery.cookie.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/controle.js"></script>
+	<!-- SELECT2 TO FORMS-->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Validation -->
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
@@ -109,6 +98,5 @@ $rs = new recordset();
 		$(".date").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});	
 		
 	</script>
-
 </body>
 </html>	

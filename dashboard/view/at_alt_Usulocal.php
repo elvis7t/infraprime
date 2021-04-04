@@ -1,7 +1,6 @@
 <?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "ATIVOLOCAL";
@@ -11,7 +10,6 @@ require_once("../config/valida.php");
 require_once("../config/mnutop.php");
 require_once("../config/menu.php");
 require_once("../config/modals.php");
-
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -72,6 +70,9 @@ require_once("../config/modals.php");
 										<input type="text" DISABLED class="form-control" name="usu_id" id="usu_id" value="<?=$rs->fld("usu_id");?>"/>
 										<input type="hidden" value="<?=$_SESSION['token'];?>" name="token" id="token">
 										<input type="hidden" value="<?=isset($_GET['lista']) ? $_GET['lista']: 0 ;?>" name="lista" id="lista">
+										<input type="hidden" value="<?=$rs->fld("at_usu_chapa");?>" name="usu_chapa" id="usu_chapa">
+										<input type="hidden" value="<?=$rs->fld("at_usu_cargo");?>" name="usu_cargo" id="usu_cargo">
+										<input type="hidden" value="<?=$rs->fld("usu_empId");?>" name="sel_emp"   id="sel_emp">
 									</div>
 									<div class="form-group col-md-4">
 										<label for="emp_id">#Empresa:</label>
@@ -98,7 +99,7 @@ require_once("../config/modals.php");
 										<div class="input-group-addon">
 											<i class="glyphicon glyphicon-tasks"></i>
 											</div> 
-											<select class="form-control select2" id="usu_dpId" name="usu_dpId">    
+											<select class="form-control select2" id="sel_dp" name="sel_dp">    
 											<option value="">Selecione:</option>
 											<?php
 												$whr = "dp_empId=".$var;
@@ -193,35 +194,35 @@ require_once("../config/modals.php");
     </div><!-- ./wrapper -->    
 
     <!-- jQuery 2.1.4 --> 
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!--AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
     <!-- Sparkline -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/js/maskinput.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/js/jmask.js"></script>
 	<!--datatables-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
     
      <!-- ChartJS 1.0.1-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) 
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
-	<script src="http://localhost/infraprime/dashboard/js/action_ativoslocais.js"></script>  <!--Chama o java script -->
-	<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
-	<script src="http://localhost/infraprime/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
+	<script src="<?=$hosted;?>/dashboard/js/action_ativoslocais.js"></script>  <!--Chama o java script -->
+	<script src="<?=$hosted;?>/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
+	<script src="<?=$hosted;?>/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
 	<!-- Validation --> 
 	<!-- SELECT2 TO FORMS --> 
 

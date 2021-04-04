@@ -30,6 +30,6 @@ while($rs->GeraDados()){ ?>
 	</tr>	
 <?php  
 }
-echo "<tr><td colspan=7><strong>".$rs->linhas." Empresas Cadastradas</strong></td></tr>";    
+// echo "<tr><td colspan=7><strong>".$rs->linhas." Empresas Cadastradas</strong></td></tr>";    
 endif;
 ?> 

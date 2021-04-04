@@ -19,11 +19,15 @@ $sql ="SELECT * FROM sys_mail  a
 		while($rs->GeraDados()){?> 
 		<tr>
 			<td><input type="checkbox"></td>
-			<td class="mailbox-star"><i class="fa fa-star text-yellow"></i></a></td>
+			<td class="mailbox-star"><i class="fa fa-star text-yellow"></i></a></td>			
 			<td class="mailbox-name"><a href="sys_ler_enviado.php?token=<?=$_SESSION['token'];?>&acao=N&mail_Id=<?=$rs->fld("mail_Id");?>"><?=$rs->fld("usu_nome");?></a></td>
 			<td class="mailbox-subject"><b><?=$rs->fld("mail_assunto");?></b></td>								
-			<td><span class="label label-<?=$rs->fld("status_classe");?>"><?=$rs->fld("status_desc");?></span></td>
-			</td>
+			<td><span class="label label-<?=$rs->fld("status_classe");?>"><?=$rs->fld("status_desc");?></span></td>				 
+				<?php if($rs->fld("mail_statusId")==2): ?>
+					<td class="mailbox-star"><i class="fa fa-eye text-blue"></i></a></td>					 
+				<?php else: ?>
+					<td class="mailbox-star"><i class="fa fa-eye-slash text-red"></i></a></td>
+				<?php endif;?> 					
 			<td class="mailbox-date"><?=$fn->data_hbr($rs->fld("mail_data"));?></td>		
 		</tr>
 			  <?php                     

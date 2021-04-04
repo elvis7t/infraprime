@@ -57,9 +57,7 @@ $destinatarios = "elvis7t@gmail.com";
 
 		   
 
-		//$usuario = "elvist@bol.com.br";
-
-		//$senha = "silva777"; 
+		
 
  
 

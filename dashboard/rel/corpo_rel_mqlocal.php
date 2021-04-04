@@ -1,17 +1,12 @@
 <?php
 require_once("../class/class.functions.php");
 require_once("../model/recordset.php");
-
-
-	$rs = new recordset();
-	
+	$rs = new recordset();	
 	$func 	= new functions();
 	/*echo "<pre>";
 	print_r($_GET);
 	echo "</pre>";*/
-	extract($_GET);
-	
-	
+	extract($_GET);	
 	$sql = "SELECT * FROM ".$tabela."   a
 			JOIN at_empresas    	b ON a.mq_empId    = b.emp_id 
 			JOIN mq_fabricante  	c ON a.mq_fabId    = c.fab_id
@@ -21,27 +16,15 @@ require_once("../model/recordset.php");
 			JOIN mq_os              g ON a.mq_osId     = g.os_id
 			JOIN at_usuarios        h ON a.mq_usuId    = h.usu_id
 			JOIN at_departamentos	i ON a.mq_dpId     = i.dp_id
-			JOIN mq_office			j ON a.mq_officeId = j.office_id
-			
-			 
-		WHERE mq_ativo <> 1 AND mq_empId =".$emp;  
-	
-	
+			JOIN mq_office			j ON a.mq_officeId = j.office_id			 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId =".$emp;  	
 	
 	$sql.=" ORDER BY emp_alias  "; 
 	
-	
-	
-	$rs->FreeSql($sql); 
-	
-	while($rs->GeraDados()):  
-	
+	$rs->FreeSql($sql); 	
+	while($rs->GeraDados()):  	
 	?>
-	
-	
-	<tr>
-		  
-		
+	<tr>		
 		<td><?=$rs->fld("emp_alias");?></td>
 		<td><?=$rs->fld("dp_nome");?></td>
 		<td><?=$rs->fld("at_usu_nome");?></td>
@@ -55,20 +38,14 @@ require_once("../model/recordset.php");
 		<td><?=$func->data_br($rs->fld("mq_datacad"));?></td>  
 		<td><?=$func->data_br($rs->fld("mq_datagar"));?></td> 
 		<td><?php if($rs->fld("mq_licenca")==1 ): ?>
-					OEM
-					
-					<?php else: ?>
-					Open
-					
-					<?php
-					endif;
-					?> 	
+			OEM					
+			<?php else: ?>
+			Open					
+			<?php endif;?> 	
 		</td>  
 	</tr>
-	<?php endwhile;
-	echo "<tr><td><strong>".$rs->linhas." Registros</strong></td></tr>";
-	//echo "<tr><td><address>".$filtro."</address></td></tr>";
-
-	
-	?>
+<?php endwhile;
+echo "<tr><td><strong>".$rs->linhas." Registros</strong></td></tr>";
+//echo "<tr><td><address>".$filtro."</address></td></tr>";	
+?>
 	

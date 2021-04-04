@@ -1,6 +1,7 @@
 <?php
 $sess = "GRA";
 $pag = "at_grafico_maquinas_ano.php";
+require_once("../config/sessions.php");
 require_once("../config/valida.php");
 require_once("../config/main.php");
 require_once("../config/mnutop.php");
@@ -193,28 +194,28 @@ $ano10 = date("Y") - 10;
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-  <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+  <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://localhost/infraprime/dashboard/assets/plugins/morris/morris.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/morris/morris.min.js"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->   
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
 <!-- FLOT CHARTS -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="http://localhost/infraprime/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/flot/jquery.flot.categories.min.js"></script>
 <!-- Page script -->
 <!--  script  flot-->
 <script>
@@ -336,7 +337,7 @@ $ano10 = date("Y") - 10;
       element: 'bar-chart-emp', 
       resize: true,
       data: [ 
-        {y: 'NIFF',    a: <?=$mqniffano10;?>,   b:<?=$mqniffano9;?>,   c: <?=$mqniffano8;?>,   d: <?=$mqniffano7;?>,   e:<?=$mqniffano6;?>,   f:<?=$mqniffano5;?>,   g:<?=$mqniffano4;?>,   h:<?=$mqniffano3;?>,   i:<?=$mqniffano2;?>,   j:<?=$mqniffano1;?>,   l:<?=$mqniffano;?>},
+        {y: 'SUPPORT',    a: <?=$mqniffano10;?>,   b:<?=$mqniffano9;?>,   c: <?=$mqniffano8;?>,   d: <?=$mqniffano7;?>,   e:<?=$mqniffano6;?>,   f:<?=$mqniffano5;?>,   g:<?=$mqniffano4;?>,   h:<?=$mqniffano3;?>,   i:<?=$mqniffano2;?>,   j:<?=$mqniffano1;?>,   l:<?=$mqniffano;?>},
         {y: 'EOVG',    a: <?=$mqeovgano10;?>,   b:<?=$mqeovgano9;?>,   c: <?=$mqeovgano8;?>,   d: <?=$mqeovgano7;?>,   e:<?=$mqeovgano6;?>,   f:<?=$mqeovgano5;?>,   g:<?=$mqeovgano4;?>,   h:<?=$mqeovgano3;?>,   i:<?=$mqeovgano2;?>,   j:<?=$mqeovgano1;?>,   l:<?=$mqeovgano;?>},
         {y: 'VUG',     a: <?=$mqvugano10;?>,    b:<?=$mqvugano9;?>,    c: <?=$mqvugano8;?>,    d: <?=$mqvugano7;?>,    e:<?=$mqvugano6;?>,    f:<?=$mqvugano5;?>,    g:<?=$mqvugano4;?>,    h:<?=$mqvugano3;?>,    i:<?=$mqvugano2;?>,    j:<?=$mqvugano1;?>,    l:<?=$mqvugano;?>},
 		{y: 'LAVRAS',  a: <?=$mqlavrasano10;?>, b:<?=$mqlavrasano9;?>, c: <?=$mqlavrasano8;?>, d: <?=$mqlavrasano7;?>, e:<?=$mqlavrasano6;?>, f:<?=$mqlavrasano5;?>, g:<?=$mqlavrasano4;?>, h:<?=$mqlavrasano3;?>, i:<?=$mqlavrasano2;?>, j:<?=$mqlavrasano1;?>, l:<?=$mqlavrasano;?>},
@@ -371,7 +372,7 @@ $ano10 = date("Y") - 10;
         value: <?=$mqniff?>,
         color: "#00c0ef",
         highlight: "#00c0ef",
-        label: "NIFF"
+        label: "SUPPORT"
       },	
 		
       {

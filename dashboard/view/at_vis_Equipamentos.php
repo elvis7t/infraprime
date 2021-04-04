@@ -1,7 +1,6 @@
 <?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "ATIVO";
@@ -11,7 +10,6 @@ require_once("../config/valida.php");
 require_once("../config/mnutop.php");
 require_once("../config/menu.php");
 require_once("../config/modals.php");
-
 ?>  
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -196,7 +194,7 @@ require_once("../config/modals.php");
 					</div><!-- /.box-header --> 
 					<!-- form start -->
 					<div class="box-body">
-						<table id="usu" class="table table-bordered table-striped">
+						<table id="equipamentos" class="table table-bordered table-striped">
 							<thead>
 								  <tr>
 										<th>C&oacute;d:</th>
@@ -237,31 +235,34 @@ require_once("../config/modals.php");
      </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 --> 
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!--AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
     <!-- Sparkline -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
-     <!-- ChartJS 1.0.1-->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/js/maskinput.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/js/jmask.js"></script>
+	<!--datatables-->
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>	
+	<!-- ChartJS 1.0.1-->
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) 
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/pages/dashboard2.js"></script>-->
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
-	<script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>  <!--Chama o java script -->
-	<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
-	<script src="http://localhost/infraprime/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
+	<script src="<?=$hosted;?>/dashboard/js/action_ativos.js"></script>  <!--Chama o java script -->
+	<script src="<?=$hosted;?>/dashboard/js/functions.js"></script>  <!--Chama o java script para excluir -->
+	<script src="<?=$hosted;?>/dashboard/js/controle.js"></script>  <!--Chama o java script para mascara -->
 	<!-- Validation --> 
 	<!-- SELECT2 TO FORMS --> 
 
@@ -284,6 +285,38 @@ require_once("../config/modals.php");
 		$('[data-toggle="popover"]').popover();
 	});
 
+	$(function () {
+		$('#equipamentos').DataTable({
+			"columnDefs": [{
+			"defaultContent": "-",
+			"targets": "_all"
+			}],
+			language :{
+				"sEmptyTable": "Nenhum registro encontrado",
+				"sInfo": "Mostrando de _START_ at&eacute; _END_ de _TOTAL_ registros",  
+				"sInfoEmpty": "Mostrando 0 at&eacute; 0 de 0 registros",
+				"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+				"sInfoPostFix": "",
+				"sInfoThousands": ".",
+				"sLengthMenu": "_MENU_ resultados por p&aacute;gina",
+				"sLoadingRecords": "Carregando...",
+				"sProcessing": "Processando...",
+				"sZeroRecords": "Nenhum registro encontrado",
+				"sSearch": "Pesquisar",
+				"oPaginate": {
+					"sNext": "Pr&oacute;ximo",
+					"sPrevious": "Anterior", 
+					"sFirst": "Primeiro",
+					"sLast": "&Uacute;ltimo"   
+				},
+				"oAria": {
+					"sSortAscending": ": Ordenar colunas de forma ascendente",
+					"sSortDescending": ": Ordenar colunas de forma descendente"
+				}
+			}
+			});
+		});
+	</script>
 </script> 
   </body>
 </html> 

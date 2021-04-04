@@ -1,5 +1,46 @@
+<!-- SERVIDORES COM 180 DIAS DE GARANTIA -->
+	<?php
 	
+	$sql ="	SELECT * FROM at_maquinas
+		WHERE DATEDIFF(mq_datagar, CURDATE()) <= 180 and DATEDIFF(mq_datagar, CURDATE()) > 0 AND mq_servtp ='f' AND mq_tipoId   IN  ('10','51','84','85','86','87')";
+		$rs->FreeSql($sql);
+	if($_SESSION['usu_classe']<=2): // A partir de usuário, vê  	
+	?>
 	<!-- Notifications: style can be found in dropdown.less -->
+	<li class="dropdown notifications-menu">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		  <i class="fa fa-server"></i>
+		  <?php if($rs->linhas>=1 ): ?>
+		  <span class="label label-danger"><?=$rs->linhas;?></span>
+		  <?php endif; ?>		  		  
+		</a>
+		<ul class="dropdown-menu">
+		  <li class="header"> Servidores com garantia a terminar <?=$rs->linhas;?></li>
+		  <li>
+			<!-- inner menu: contains the actual data -->
+			<ul class="menu">
+				<?php
+				$rs->FreeSql($sql);
+				while($rs->GeraDados()){
+				?>
+			  <li>
+				<a href="at_ger_Servidor.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>">
+				  <i class="fa fa-hdd-o text-purple"></i> <?=$rs->fld("mq_id")." - ".$rs->fld("mq_nome");?>
+				</a>
+			  </li>
+			  <li>
+			  <?php 
+				}
+			   ?>
+				
+			</ul>
+		  </li>
+		  <li class="footer"><a href="at_servidor.php?token=<?=$_SESSION['token'];?>">Ver Todos</a></li>
+		</ul>
+	</li>
+<!-- FIM -->	
+
+<!-- EQUIPAMENTOS EM EMPRESTIMO -->
 	<?php
 	
 	$sql ="	SELECT empre_id, empre_eqdesc FROM eq_emprestimo a
@@ -28,7 +69,7 @@
 		";
 		$rs->FreeSql($sql);
 		
-		if($_SESSION['usu_classe']<=2): // A partir de usuário, vê  
+		
 		?>
 		
 	<li class="dropdown notifications-menu">
@@ -61,7 +102,10 @@
 		  </li>
 		  <li class="footer"><a href="at_emprestimo.php?token=<?=$_SESSION['token'];?>">Ver Todos</a></li>
 		</ul>
-	</li>		
+	</li>
+<!-- FIM -->
+
+<!-- COMPRAS -->	
 			<!-- Tasks: style can be found in dropdown.less -->
 	<li class="dropdown tasks-menu">
 	<?php
@@ -108,7 +152,9 @@
 		</ul>
 	</li>
 	<?php endif; ?> 
-	<!-- Messages: style can be found in dropdown.less-->
+<!-- FIM -->
+
+<!-- E_MAIL -->
 	<li class="dropdown messages-menu">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		<?php
@@ -147,7 +193,7 @@
 			  <li><!-- start message -->
 				<a href="sys_ler_mail.php?token=<?=$_SESSION['token'];?>&acao=N&mail_Id=<?=$rs->fld("mail_Id");?>">
 				  <div class="pull-left">
-					<img src="http://localhost/infraprime/dashboard/<?=$rs->fld('usu_foto');?>" class="img-circle" alt="User Image">
+					<img src="http://www.niff.com.br/infraprime/dashboard/<?=$rs->fld('usu_foto');?>" class="img-circle" alt="User Image">
 				  </div>
 				  <h4>
 					<?=$rs->fld("mail_assunto");?>

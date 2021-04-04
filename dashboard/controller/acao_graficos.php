@@ -178,10 +178,8 @@ $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $win81 = $rs->linhas;
 
-
-
-
 //----- Fim da Função de sistema operacional ----\\\	
+
 
 //----- FUNCAO DE S O POR EMPRESAS----\\
 /*NIFF*/
@@ -478,7 +476,7 @@ $Vugwin81 = $rs->linhas;
 
 // ------- QUANTIDADE DE MAQUINAS---------\\\
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' ";
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') ";
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $maquinas = $rs->linhas;  
@@ -489,56 +487,55 @@ $maquinas = $rs->linhas;
 //----- Função de maquinas por empresa ----
 $rs = new recordset();
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  1"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  1"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniff = $rs->linhas;  
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  2"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  2"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovg = $rs->linhas;  
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  3"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  3"; 
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqrapdo = $rs->linhas;  
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  4"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  4"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcamp= $rs->linhas;  
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  5"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  5"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqaruja = $rs->linhas; 
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  6"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  6"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabc = $rs->linhas; 
 
-
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  7"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  7"; 
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqcisne = $rs->linhas; 
 								
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  8"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  8"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavras = $rs->linhas; 
 
 $sql ="SELECT * FROM at_maquinas
-		WHERE mq_ativo = '1' AND mq_empId=  9"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=  9"; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvug = $rs->linhas; 
@@ -609,7 +606,7 @@ $eqvug = $rs->linhas;
 
 /* CLIENTES*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId=".$_SESSION['usu_empresa']; 
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_empId=".$_SESSION['usu_empresa']; 
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $maquinaslocal = $rs->linhas;  
@@ -642,6 +639,47 @@ WHERE usu_ativo = '1' AND usu_empId=".$_SESSION['usu_empresa'];
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $usuarioslocal = $rs->linhas; 
+
+if($_SESSION['usu_empresa']==1):
+$sql ="SELECT * FROM at_usuarios
+WHERE usu_ativo = '1' 
+AND (
+usu_empId= 1
+OR usu_empId = 7   
+)"; 
+$rs->FreeSql($sql);
+while($rs->GeraDados()){ }
+$usuariosdp = $rs->linhas; 
+endif;
+
+if($_SESSION['usu_empresa']==3):
+$sql ="SELECT * FROM at_usuarios
+WHERE usu_ativo = '1' 
+AND (
+usu_empId= 3
+OR usu_empId = 11 
+OR  usu_empId =12   
+)"; 
+$rs->FreeSql($sql);
+while($rs->GeraDados()){ }
+$usuariosdp = $rs->linhas; 
+endif;
+
+if($_SESSION['usu_empresa']==1):
+$sql ="SELECT * FROM at_departamentos 
+WHERE  dp_empId =1 OR  dp_empId =7"; 
+$rs->FreeSql($sql);
+while($rs->GeraDados()){ }
+$pessoaldp = $rs->linhas; 
+endif;
+
+if($_SESSION['usu_empresa']==3):
+$sql ="SELECT * FROM at_departamentos 
+WHERE  dp_empId =3 OR dp_empId =11 OR  dp_empId =12"; 
+$rs->FreeSql($sql);
+while($rs->GeraDados()){ }
+$pessoaldp = $rs->linhas; 
+endif;
 
 $sql ="SELECT * FROM eq_solicitacao
 WHERE solic_empId=".$_SESSION['usu_empresa']; 
@@ -695,6 +733,7 @@ $tecladolocal = $rs->linhas;
 $sql ="SELECT * FROM at_maquinas
 WHERE mq_ativo = '1'  
 AND mq_usuId = 0 
+AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')
 AND mq_empId =".$_SESSION['usu_empresa'];  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
@@ -717,7 +756,7 @@ $maneqlocal = $rs->linhas;
 /*USUARIO + ADMIM*/   
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1'";
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')";
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $maquinas = $rs->linhas;  
@@ -759,7 +798,7 @@ $eqdescarte = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '0' AND mq_statusId = 4 AND id_inst = 0";
+WHERE mq_ativo = '0' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND mq_statusId = 4 AND id_inst = 0";
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ $rs->fld("mq_id");}
 $mqdescarte = $rs->linhas;     
@@ -768,12 +807,12 @@ $descartetotal =$mqdescarte + $eqdescarte;
 //-------
 //-------
 
-$sql ="SELECT SUM(mq_valor) FROM at_maquinas WHERE mq_ativo = '1'" ;
+$sql ="SELECT SUM(mq_valor) FROM at_maquinas WHERE  mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')" ;
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ $mqvalor = $rs->fld("SUM(mq_valor)"); }
 
 
-$sql ="SELECT SUM(eq_valor) FROM at_equipamentos WHERE eq_ativo = '1'" ;
+$sql ="SELECT SUM(eq_valor) FROM at_equipamentos WHERE eq_ativo = '1' " ;
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ $eqvalor = $rs->fld("SUM(eq_valor)"); }
  
@@ -805,6 +844,7 @@ FROM at_equipamentos
 WHERE eq_desc='Mouse' AND eq_ativo = '1'
 AND eq_usuId = 0 
 AND eq_mqId  = 0
+AND eq_statusId <> 7
 AND (
 eq_empId =1
 OR eq_empId =2
@@ -858,6 +898,7 @@ $radiore = $rs->linhas;
 $sql ="SELECT * FROM at_maquinas
 WHERE mq_ativo = '1'  AND mq_usuId = 0 
 AND mq_usuId = 0 
+AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')
 AND (
 mq_empId =1
 OR mq_empId =2
@@ -906,74 +947,74 @@ $maneq = $rs->linhas;
 /* ----------FUNCAO MAQUINAS POR ANO ----------------------------*/ 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano3 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqano = $rs->linhas;
@@ -984,74 +1025,74 @@ $mqano = $rs->linhas;
 
 /// NIFF
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_ativo = '1' AND mq_empId = 1 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1'  AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqniffano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 1 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 1 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffano = $rs->linhas;
@@ -1059,74 +1100,74 @@ $mqniffano = $rs->linhas;
 
 /// EOVG
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqeovgano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 2 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 2 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqeovgano = $rs->linhas;
@@ -1134,74 +1175,74 @@ $mqeovgano = $rs->linhas;
 
 /// VUG
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqvugano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 9 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 9 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugano = $rs->linhas;
@@ -1209,74 +1250,74 @@ $mqvugano = $rs->linhas;
 
 /// ARUJA*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqlavrasano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ } 
 $mqlavrasano = $rs->linhas;
@@ -1284,74 +1325,74 @@ $mqlavrasano = $rs->linhas;
 
 /// NIFF ARUJA*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 5 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqarujaano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 8 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 8 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujaano = $rs->linhas; 
@@ -1359,74 +1400,74 @@ $mqarujaano = $rs->linhas;
 
 /// ABC*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqabcano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 6 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 6 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcano = $rs->linhas;
@@ -1434,74 +1475,74 @@ $mqabcano = $rs->linhas;
 
 /// CAMPBUS*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqcampano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 4 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 4 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampano = $rs->linhas;
@@ -1509,74 +1550,74 @@ $mqcampano = $rs->linhas;
 
 /// RAPDO*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqrapdoano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 3 and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 3 AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdoano = $rs->linhas; 
@@ -1584,74 +1625,74 @@ $mqrapdoano = $rs->linhas;
 
 /// CISNE*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -10)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano10 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -9)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano9 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -8)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano8 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -7)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano7 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -6)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano6 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -5)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano5 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -4)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano4 = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -3)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano3 = $rs->linhas; 
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -2)";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano2 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) -1)";     
 $rs->FreeSql($sql); 
 while($rs->GeraDados()){ }
 $mqcisneano1 = $rs->linhas;
 
 $sql ="SELECT * FROM at_maquinas 
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR( mq_datacad ) = (SELECT EXTRACT(YEAR FROM CURDATE()) )";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisneano = $rs->linhas;
@@ -1664,14 +1705,14 @@ $mqcisneano = $rs->linhas;
 
 //SEM*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqtotalsemgar  = $rs->linhas;
 
 //COM*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqtotalgar = $rs->linhas;
@@ -1685,14 +1726,14 @@ $mqtotalgar = $rs->linhas;
 
 //NIFF*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 1  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqniffsemgar  = $rs->linhas;
  
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 1  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 1  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ } 
 $mqniffgar = $rs->linhas;
@@ -1700,14 +1741,14 @@ $mqniffgar = $rs->linhas;
 
 //EOVG*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 2  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovgsemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 2  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 2  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqeovggar = $rs->linhas;
@@ -1715,14 +1756,14 @@ $mqeovggar = $rs->linhas;
 
 //VUG*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 9  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvugsemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 9  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 9  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqvuggar = $rs->linhas;
@@ -1730,14 +1771,14 @@ $mqvuggar = $rs->linhas;
 
 //LAVRAS*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 8  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrassemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 8  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 8  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqlavrasgar = $rs->linhas;
@@ -1745,14 +1786,14 @@ $mqlavrasgar = $rs->linhas;
 
 //ARUJA*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 5  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujasemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 5  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 5  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqarujagar = $rs->linhas;
@@ -1760,14 +1801,14 @@ $mqarujagar = $rs->linhas;
 
 //ABC*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 6  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcsemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 6  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 6  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqabcgar = $rs->linhas;
@@ -1775,14 +1816,14 @@ $mqabcgar = $rs->linhas;
 
 //CAMPBUS*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 4  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampsemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 4  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 4  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcampgar = $rs->linhas;
@@ -1790,14 +1831,14 @@ $mqcampgar = $rs->linhas;
 
 //RAPDO*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdosemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 3  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 3  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqrapdogar = $rs->linhas;
@@ -1805,14 +1846,14 @@ $mqrapdogar = $rs->linhas;
 
 //CISNE*/
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) < YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisnesemgar  = $rs->linhas;
 
 
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId = 7  and  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
+WHERE mq_ativo = '1' AND mq_empId = 7  AND  mq_tipoId NOT IN  ('10','51','84','85','86','87') AND  YEAR(mq_datagar) >= YEAR(CURDATE( ))";     
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ }
 $mqcisnegar = $rs->linhas;

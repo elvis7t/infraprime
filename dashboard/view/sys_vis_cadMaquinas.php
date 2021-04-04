@@ -1,7 +1,6 @@
 <?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "ATIVO";
@@ -11,7 +10,6 @@ require_once("../config/main.php");
 require_once("../config/mnutop.php");
 require_once("../config/menu.php");
 require_once("../config/modals.php");
-
 ?>
    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -224,27 +222,27 @@ require_once("../config/modals.php");
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <!--<script src="plugins/fastclick/fastclick.min.js"></script>-->
     <!-- AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
     <!-- Sparkline -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- ChartJS 1.0.1 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/chartjs/Chart.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <!--<script src="http://localhost/infraprime/dashboard/assets/dist/js/pages/dashboard2.js"></script> -->
+    <!--<script src="<?=$hosted;?>/dashboard/assets/dist/js/pages/dashboard2.js"></script> -->
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/demo.js"></script>
-	<script src="http://localhost/infraprime/dashboardjs/action_contato.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/demo.js"></script>
+	<script src="<?=$hosted;?>/dashboardjs/action_contato.js"></script>
 	<!-- Validation -->
 	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 	<script>

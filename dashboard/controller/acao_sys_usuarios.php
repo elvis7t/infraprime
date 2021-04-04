@@ -10,7 +10,7 @@ while($rs->GeraDados()){
 $elvis_id = $rs->fld("usu_cod");
 $elvis = $rs->fld("usu_nome");
 $elvis_empId = $rs->fld("usu_empId");				
-$foto_elvis = $hosted."/".$rs->fld('usu_foto');
+$foto_elvis = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
@@ -64,7 +64,7 @@ while($rs->GeraDados()){
 $anderson_id = $rs->fld("usu_cod");
 $anderson = $rs->fld("usu_nome");
 $anderson_empId = $rs->fld("usu_empId");				
-$foto_anderson = $hosted."/".$rs->fld('usu_foto');
+$foto_anderson = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
@@ -105,7 +105,7 @@ while($rs->GeraDados()){
 $peterson_id = $rs->fld("usu_cod");
 $peterson = $rs->fld("usu_nome");
 $peterson_empId = $rs->fld("usu_empId");				
-$foto_peterson = $hosted."/".$rs->fld('usu_foto');
+$foto_peterson = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
@@ -137,45 +137,45 @@ $eq_peterson = $rs->linhas;
 
  /* ----------FIM PETERRSON----------------------*/
 
-/* -----------MATIAS----------------------*/
+/* -----------GEOVANE----------------------*/
 $sql ="SELECT * FROM sys_usuarios
-WHERE usu_cod =4";  
+WHERE usu_cod =17";  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$matias_id = $rs->fld("usu_cod");
-$matias = $rs->fld("usu_nome"); 
-$matias_empId = $rs->fld("usu_empId");				
-$foto_matias = $hosted."/".$rs->fld('usu_foto');
+$geovane_id = $rs->fld("usu_cod");
+$geovane = $rs->fld("usu_nome"); 
+$geovane_empId = $rs->fld("usu_empId");				
+$foto_geovane = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
 $sql ="SELECT * FROM at_empresas
-WHERE emp_id =".$matias_empId;  
+WHERE emp_id =".$geovane_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$matias_emp = $rs->fld("emp_alias");				
+$geovane_emp = $rs->fld("emp_alias");				
  
 }
 
 $sql ="SELECT * FROM mq_manutencao
-WHERE man_usucad =".$matias_id;  
+WHERE man_usucad =".$geovane_id;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$at_matias = $rs->linhas;
+$at_geovane = $rs->linhas;
  
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo = '1' AND mq_empId =".$matias_empId;  
+WHERE mq_ativo = '1' AND mq_empId =".$geovane_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){} 
-$mq_matias = $rs->linhas; 
+$mq_geovane = $rs->linhas; 
 
 $sql ="SELECT * FROM at_equipamentos
-WHERE eq_ativo = '1' AND eq_empId =".$matias_empId;  
+WHERE eq_ativo = '1' AND eq_empId =".$geovane_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$eq_matias = $rs->linhas; 
+$eq_geovane = $rs->linhas; 
 
- /* ----------FIM MATIAS----------------------*/
+ /* ----------FIM GEOVANE----------------------*/
 
 
  /* -----------FERNANDO----------------------*/
@@ -186,7 +186,7 @@ while($rs->GeraDados()){
 $fernando_id = $rs->fld("usu_cod");
 $fernando = $rs->fld("usu_nome");
 $fernando_empId = $rs->fld("usu_empId");				
-$foto_fernando = $hosted."/".$rs->fld('usu_foto');
+$foto_fernando = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
@@ -218,85 +218,85 @@ $eq_fernando = $rs->linhas;
 
  /* ----------FIM FERNANDO----------------------*/
 
- /* -----------WILSON----------------------*/
+ /* -----------Nícolas----------------------*/
 $sql ="SELECT * FROM sys_usuarios
-WHERE usu_cod = 6";  
+WHERE usu_cod = 18";  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$wilson_id = $rs->fld("usu_cod");
-$wilson = $rs->fld("usu_nome");
-$wilson_empId = $rs->fld("usu_empId");				
-$foto_wilson = $hosted."/".$rs->fld('usu_foto');
+$nicolas_id = $rs->fld("usu_cod");
+$nicolas = $rs->fld("usu_nome");
+$nicolas_empId = $rs->fld("usu_empId");				
+$foto_nicolas = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
 $sql ="SELECT * FROM at_empresas
-WHERE emp_id =".$wilson_empId;  
+WHERE emp_id =".$nicolas_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$wilson_emp = $rs->fld("emp_alias");				
+$nicolas_emp = $rs->fld("emp_alias");				
  
 }
 
 $sql ="SELECT * FROM mq_manutencao
-WHERE man_usucad =".$wilson_id;  
+WHERE man_usucad =".$nicolas_id;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$at_wilson = $rs->linhas;
+$at_nicolas = $rs->linhas;
  
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo <> 1 AND mq_empId =".$wilson_empId;  
+WHERE mq_ativo <> 1 AND mq_empId =".$nicolas_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){} 
-$mq_wilson = $rs->linhas; 
+$mq_nicolas = $rs->linhas; 
 
 $sql ="SELECT * FROM at_equipamentos
-WHERE eq_ativo <> 1 AND eq_empId =".$wilson_empId;  
+WHERE eq_ativo <> 1 AND eq_empId =".$nicolas_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$eq_wilson = $rs->linhas; 
+$eq_nicolas = $rs->linhas; 
 
- /* ----------FIM WILSON----------------------*/
+ /* ----------FIM Nícolas----------------------*/
 
- /* -----------EMERSON----------------------*/
+ /* -----------SIMONE----------------------*/
 $sql ="SELECT * FROM sys_usuarios
-WHERE usu_cod = 7";  
+WHERE usu_cod = 15";  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$emerson_id = $rs->fld("usu_cod");
-$emerson = $rs->fld("usu_nome");
-$emerson_empId = $rs->fld("usu_empId");				
-$foto_emerson = $hosted."/".$rs->fld('usu_foto');
+$simone_id = $rs->fld("usu_cod");
+$simone = $rs->fld("usu_nome");
+$simone_empId = $rs->fld("usu_empId");				
+$foto_simone = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
 $sql ="SELECT * FROM at_empresas
-WHERE emp_id =".$emerson_empId;  
+WHERE emp_id =".$simone_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){ 
-$emerson_emp = $rs->fld("emp_alias");				
+$simone_emp = $rs->fld("emp_alias");				
  
 }
 
 $sql ="SELECT * FROM mq_manutencao
-WHERE man_usucad =".$emerson_id;  
+WHERE man_usucad =".$simone_id;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$at_emerson = $rs->linhas;
+$at_simone = $rs->linhas;
  
 $sql ="SELECT * FROM at_maquinas
-WHERE mq_ativo <> 1 AND mq_empId =".$emerson_empId;  
+WHERE mq_ativo <> 1 AND mq_empId =".$simone_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){} 
-$mq_emerson = $rs->linhas; 
+$mq_simone = $rs->linhas; 
 
 $sql ="SELECT * FROM at_equipamentos
-WHERE eq_ativo <> 1 AND eq_empId =".$emerson_empId;  
+WHERE eq_ativo <> 1 AND eq_empId =".$simone_empId;  
 $rs->FreeSql($sql);
 while($rs->GeraDados()){}
-$eq_emerson = $rs->linhas; 
+$eq_simone = $rs->linhas; 
 
- /* ----------FIM EMERSON----------------------*/
+ /* ----------FIM SOMONE----------------------*/
 
  /* -----------VALMAR----------------------*/
 $sql ="SELECT * FROM sys_usuarios
@@ -306,7 +306,7 @@ while($rs->GeraDados()){
 $valmar_id = $rs->fld("usu_cod");
 $valmar = $rs->fld("usu_nome");
 $valmar_empId = $rs->fld("usu_empId");				
-$foto_valmar = $hosted."/".$rs->fld('usu_foto');
+$foto_valmar = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 
@@ -346,7 +346,7 @@ while($rs->GeraDados()){
 $andre_id = $rs->fld("usu_cod");
 $andre = $rs->fld("usu_nome");
 $andre_empId = $rs->fld("usu_empId");				
-$foto_andre = $hosted."/".$rs->fld('usu_foto');
+$foto_andre = $hosted."/dashboard/".$rs->fld('usu_foto');
  
 }
 

@@ -249,12 +249,12 @@ $(document.body).on("click","#btn_cadEmp", function(){
 		
 	/*---------------|FIM DE ALTERAR EMPRESA|------------------*/	
 
-/*---------------|EXCLUIR  EMPRESA|-----------------*\
-	|	Author: 	Cleber Marrara Prado							| 
-	|	E-mail: 	cleber.marrara.prado@gmail.com					|
-	|	Version:	1.0												|
-	|	Date:       31/10/2016						   				|
-	\--------------------------------------------------------------*/ 
+	/*---------------|EXCLUIR  EMPRESA|-----------------*\
+	|	Author: 	Cleber Marrara Prado				 | 
+	|	E-mail: 	cleber.marrara.prado@gmail.com		 |
+	|	Version:	1.0									 |
+	|	Date:       31/10/2016						   	 |
+	\---------------------------------------------------*/ 
 		
 		/*|COM A CLASSE excHoras, FAZER A EXCLUSÃO DO BD|*/
 		$(document.body).on("click",".exc_Emp",function(){
@@ -462,7 +462,9 @@ $(document.body).on("click","#btn_cadEmp", function(){
 				acao:			"cadUsuarios",
 				sel_emp:		$("#sel_emp").val(), 
 			    sel_dp:	    	$("#sel_dp").val(),
-				usu_nome:		$("#usu_nome").val()  
+				usu_nome:		$("#usu_nome").val(),
+				usu_chapa:		$("#usu_chapa").val(),  
+				usu_cargo:		$("#usu_cargo").val()  			 				
 			 
 				},function(data){
 					if (data.status == "OK") {
@@ -498,8 +500,11 @@ $(document.body).on("click","#btn_cadEmp", function(){
 			$.post("../controller/sys_acao.php",{ 
 				acao: "Altera_usu",
 				usu_id: cod,
-				usu_dpId:  $("#usu_dpId").val(),      
+				sel_emp:   $("#sel_emp").val(),
+				sel_dp:    $("#sel_dp").val(),      
 				usu_nome:  $("#usu_nome").val(),
+				usu_chapa: $("#usu_chapa").val(),
+				usu_cargo: $("#usu_cargo").val(),
 				usu_ativo: $("input[name=usu_ativo]:checked").val()   
 				  
 			},
@@ -507,7 +512,7 @@ $(document.body).on("click","#btn_cadEmp", function(){
 				if(data.status=="OK"){
 					$("#confirma").modal("hide");
 					$("#aguarde").modal("show");
-					$(location).attr('href','at_usuarios.php?token='+token); 
+					location.reload();
 				} 
 				else{
 					alert(data.mensagem);	
@@ -1626,7 +1631,7 @@ $(document.body).on("click","#btn_cadMarca", function(){
 				eq_serial:    	$("#eq_serial").val(),  
 				sol_dp:     	$("#sol_dp").val(),  
 			    sol_usu:	   	$("#sol_usu").val(),  
-			    sol_mq: 	   	$("#sol_mq").val(),  
+			    sl_mq: 	    	$("#sl_mq").val(),  
 			    solic_ticket:  	$("#solic_ticket").val(),
 			    solic_desc:	   	$("#solic_desc").val() 
 							 
@@ -1945,7 +1950,7 @@ $(document.body).on("click","#btn_cadPre", function(){
 			$("#btn_cadMan").html("<i class='fa fa-spin fa-spinner'></i> Processando...");
 			$.post("../controller/sys_acao.php",
 				{  
-				acao: "Altera_StatusEqff",
+				acao: "Altera_StatusEq",
 				eq_id: cod,
 				eq_id:		$("#eq_id").val() 
 							  
@@ -2369,7 +2374,7 @@ $(document.body).on("click","#btn_cadOs", function(){
 				os_id: cod,
 				os_desc:   $("#os_desc").val(),
 				os_versao: $("#os_versao").val()
-			},
+			}, 
 			function(data){
 				if(data.status=="OK"){
 					$("#confirma").modal("hide"); 
@@ -2600,6 +2605,43 @@ $(document.body).on("click","#btn_cadMem", function(){
 		} 
 	});
 /*---------------|FIM DO CADASTRO MEMORIA|------------------*/	
+
+	/*-------------------------|ALTERAR MEMORIA|---------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		
+	
+		$(document.body).on("click","#btn_AltMem",function(){
+			console.log("CLICK OK");
+			var token = $("#token").val();
+			var lista = $("#lista").val();
+			cod = $("#mem_id").val();
+			
+			
+			$.post("../controller/sys_acao.php",{ 
+				acao: "Altera_Memoria",
+				mem_id: cod,
+				mem_tipo:   $("#mem_tipo").val(),
+				mem_cap:    $("#mem_cap").val()
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");
+					$(location).attr('href','at_mqmemoria.php?token='+token); 
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});
+		
+	/*---------------|FIM DE ALTERAR MEMORIA |------------------*/	
+
 	
 /*-----------------------|EXCLUIR MEMORIA|--------------------------*\
 	|	Author: 	Cleber Marrara Prado							| 
@@ -2782,7 +2824,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 	        		$(element).closest('.form-group').removeClass('has-error');
 	    		}
 		});
-		if($("#cadMq").valid()==true){ 
+		if($("#cadMq").valid()==true){  
 			$("#btn_cadMq").html("<i class='fa fa-spin fa-spinner'></i> Processando...");
 			$.post("../controller/sys_acao.php",
 				{  
@@ -2803,6 +2845,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 			    mq_valor:	     	$("#mq_valor").val(),
 			    mq_datacad:	     	$("#mq_datacad").val(),
 			    mq_datagar:	     	$("#mq_datagar").val(),
+				mq_mschave:	     	$("#mq_mschave").val(),
 				mq_licenca:			$("input[name=mq_licenca]:checked").val()   
 							 
 				},function(data){
@@ -2912,6 +2955,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 				mq_id: cod,
 				mq_nome:         $("#mq_nome").val(),
 				mq_tag:    		 $("#mq_tag").val(),
+				mq_mschave:    	 $("#mq_mschave").val(),
 				mq_proc:   		 $("#mq_proc").val(),
 				sel_mqmemoria:   $("#sel_mqmemoria").val(),
 				sel_mqhd:        $("#sel_mqhd").val(),
@@ -3312,7 +3356,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 			},  "json");
 			}
 		});  
-
+		
 		$(document.body).on("click","#btn_FinManMq",function(){ 
 			 var container = $("#formerrosAltmanMq");
 			console.log("CLICK altman");
@@ -3348,10 +3392,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 			$.post("../controller/sys_acao.php",{ 
 				acao: "Altera_StatusMq2",
 				mq_id: cod,
-				mq_id:		$("#mq_id").val()   
-				 
-				
-				   
+				mq_id:		$("#mq_id").val()  				   
 			},
 			function(data){
 				if(data.status=="OK"){
@@ -3365,8 +3406,7 @@ $(document.body).on("click","#btn_cadHd", function(){
 			},  "json");
 			}
 		});
- 	
-	
+		
 	/*---------------|FIM DE FINALIZAR MANUTENÇÂO DE MAQUINAS|------------------*/
 
 	/*------------------------|LIMPAR MAQUINAS|-----------------------*\
@@ -4118,6 +4158,30 @@ $(document.body).on("click","#btn_cadHd", function(){
 				comp_id		: $("#comp_id").val(), 
 				sel_status  : $("#sel_status").val(),
 				comp_obs	: CKEDITOR.instances.comp_obs.getData()
+				},
+				function(data){
+					if(data.status=="OK"){
+						$("<div></div>").addClass("alert alert-success alert-dismissable").html('<i class="fa fa-flag-checkered"></i> '+data.mensagem+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#consulta");
+						$("#ger_comp")[0].reset();
+						$("#btn_Interagircomp").html("<i class='fa fa-save'></i> Salvar");
+						//$("#slc").load("meus_chamados.php").fadeIn("slow");
+						location.reload();
+						 
+					} else{
+						$("<div></div>").addClass("alert alert-danger alert-dismissable").html('<i class="fa fa-times"></i> Ocorreu um erro! ('+data.mensagem+')<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#consulta");
+					}
+	                console.log(data.sql);//TO DO mensagem OK
+				},
+				"json"
+			);
+	});
+	
+	$(document.body).on("click","#btn_Interagircomp", function(){
+		$("#btn_Interagircomp").html("<i class='fa fa-cog fa-spin'></i> Processando...");
+			$.post("../controller/sys_acao.php",{
+				acao		: "Alt_compStatus",
+				comp_id		: $("#comp_id").val(), 
+				sel_status  : $("#sel_status").val()
 				},
 				function(data){
 					if(data.status=="OK"){
@@ -5995,6 +6059,407 @@ $(document.body).on("click","#gccart1", function () {
 		});
 /*---------------|FIM DE OUTRAS OCORRENCIAS DE EQUIPAMENTOS|------------------*/
 
+	/*---------------|FUNCAO PARA CADASTRAR SERVIÇO|----------------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+	
+$(document.body).on("click","#btn_cadServico", function(){
+	var container = $("#formerrosServico"); 
+	$("#servico").validate({  
+		debug: true,
+		errorClass: "error", 
+		errorContainer: container,
+		errorLabelContainer: $("ol", container), 
+		wrapper: 'li', 
+		rules: {
+			servico_servidorId : {required: true}, 
+			servico_desc       : {required: true}, 
+			servico_versao     : {required: true} 	 			 
+		},  
+		messages:{
+			servico_servidorId : {required:"Selecione um Servidor"},  
+			servico_desc       : {required:"Informe um nome valido"},  
+			servico_versao     : {required:"Informe a vers&atilde;o"}			 
+		},
+		highlight: function(element) {
+			$(element).closest('.form-group').addClass('has-error');
+		},
+		unhighlight: function(element) {
+			$(element).closest('.form-group').removeClass('has-error');
+		}  
+		});     
+		if($("#servico").valid()==true){
+			$("#btn_cadServico").html("<i class='fa fa-spin fa-spinner'></i> Processando...");
+			$.post("../controller/sys_acao.php",
+				{   
+			acao:			"cad_Servico", 
+			servico_servidorId:	$("#servico_servidorId").val(),  
+			servico_desc:		$("#servico_desc").val(),  
+			servico_versao:		$("#servico_versao").val(),  
+			servico_licenca:	$("#servico_licenca").val()  
+					  
+			},function(data){
+				if (data.status == "OK") {
+					$("<div></div>").addClass("alert alert-success alert-dismissable").html('<i class="fa fa-check"></i> ('+data.mensagem+') <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#mens");
+					$("#servico")[0].reset();
+					console.log(data.query);
+					$("#cad_Servico").load("at_tbServico.php");// atualiza a pagina com o campo inserido 
+				}
+				else { 
+					$("<div></div>").addClass("alert alert-warning alert-dismissable").html('<i class="fa fa-warning"></i> Cliente j&aacute; cadastrado <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#mens");
+				}
+				$("#btn_cadServico").html("<i class='fa fa-save'></i> Salvar");
+			}, "json");
+		} 
+	});
+/*---------------|FIM DO CADASTRO DE SERVIÇOS|------------------*/
+
+/*-------------------------|ALTERAR SERVIÇOS|---------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		
+	
+		$(document.body).on("click","#btn_AltServico",function(){
+			console.log("CLICK OK");
+			var token = $("#token").val();
+			var lista = $("#lista").val();
+			cod = $("#servico_id").val(); 
+			
+			
+			$.post("../controller/sys_acao.php",{ 
+				acao: "Altera_Servico",
+				servico_id 		: cod,
+				servico_desc	: $("#servico_desc").val(),
+				servico_versao	: $("#servico_versao").val(),
+				servico_licenca	: $("#servico_licenca").val()
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");
+					location.reload(); 
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});
+		
+	/*---------------|FIM DE ALTERAR SERVIÇOS|------------------*/
+	
+/*-----------------------|EXCLUIR SERVIÇO|--------------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		
+		/*|COM A CLASSE excHoras, FAZER A EXCLUSÃO DO BD|*/
+		$(document.body).on("click",".exc_Servico",function(){
+			console.log("CLICK OK");
+			cod = $(this).data("reg");
+			$.post("../controller/sys_acao.php",{
+				acao: "exclui_Servico", 
+				servico_id: cod 
+
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide"); 
+					$("#aguarde").modal("show");
+					location.reload();
+				} 
+				else{
+					alert(data.mensagem);
+										
+				}
+			}, 
+			"json");
+		});
+	/*---------------|FIM DE EXCLUIR SERVIÇO |------------------*/		
+/*---------------|FUNCAO PARA CADASTRO DE MAQUINAS|-----------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+	
+	$(document.body).on("click","#btn_cadServidor", function(){
+        var container = $("#formerrosSr"); 
+		$("#cad_Servidor").validate({
+			debug: true,
+			errorClass: "error",
+			errorContainer: container,
+			errorLabelContainer: $("ol", container),
+   			wrapper: 'li',
+			rules: {
+				sel_empeq      : {required: true},
+                sel_tipoeq     : {required: true},
+                sel_fabmq      : {required: true},
+                mq_modelo      : {required: true, minlength: 2},
+                mq_nome        : {required: true, minlength: 6},                
+                sel_mqmemoria  : {required: true},
+                sel_mqhd       : {required: true},
+                mq_proc        : {required: true, minlength: 5},
+                sel_mqos       : {required: true},                
+                sel_mqstatus   : {required: true},                
+                mq_valor   	   : {required: true},
+                mq_datacad 	   : {required: true},                
+                mq_ip   	   : {required: true}                
+			}, 
+			messages:{
+				sel_empeq   	: {required: "Selecione uma Empresa"},
+                sel_tipoeq  	: {required: "Selecione um Tipo"},
+                sel_fabmq   	: {required: "Selecione um Fabricante"},
+                mq_modelo   	: {required: "Desc. o Modelo", minlength: "M&iacute;nimo de 2 caracteres."},
+                mq_nome   		: {required: "Desc. o Nome no padr&atilde;o WK01FIN01", minlength: "M&iacute;nimo de 6 caracteres."},                
+                sel_mqmemoria   : {required: "Selecione   a Mem&oacute;ria"},
+                sel_mqhd        : {required: "Selecione   o disco r&iacute;gido"},
+                mq_proc         : {required: "Desc.  o Precessador", minlength: "M&iacute;nimo de 5 caracteres."},
+                sel_mqos        : {required: "Selecione   o Sistema operacional"},
+                sel_mqoffice    : {required: "Selecione   o Office"},
+                sel_mqstatus    : {required: "Desc. o Satatus"},                
+                mq_valor    	: {required: "Desc.  o Valor R$"},
+                mq_datacad   	: {required: "Desc.  a Data de compra"},                
+                mq_ip 	    	: {required: "Desc.  O Endere&ccedil;o de IP"}
+            	 			
+			},
+	            highlight: function(element) {
+	        		$(element).closest('.form-group').addClass('has-error');
+	    		},
+	    		unhighlight: function(element) {
+	        		$(element).closest('.form-group').removeClass('has-error');
+	    		}
+		});
+		if($("#cad_Servidor").valid()==true){  
+			$("#btn_cadServidor").html("<i class='fa fa-spin fa-spinner'></i> Processando...");
+			$.post("../controller/sys_acao.php",
+				{  
+				acao:			"cadServidor",   
+				sel_empeq:		    $("#sel_empeq").val(), 
+			    sel_tipoeq:	     	$("#sel_tipoeq").val(), 
+			    sel_fabmq:   	    $("#sel_fabmq").val(),  
+			    mq_modelo:       	$("#mq_modelo").val(), 
+			    mq_nome:    	    $("#mq_nome").val(), 
+			    mq_tag:	     	    $("#mq_tag").val(),  
+			    sel_mqmemoria:	   	$("#sel_mqmemoria").val(),
+			    sel_mqhd:	    	$("#sel_mqhd").val(),
+			    mq_proc:	    	$("#mq_proc").val(),
+			    sel_mqos:       	$("#sel_mqos").val(),			    
+			    sel_mqstatus:      	$("#sel_mqstatus").val(),
+			    mq_nf:      	    $("#mq_nf").val(),
+			    mq_valor:	     	$("#mq_valor").val(),
+			    mq_datacad:	     	$("#mq_datacad").val(),
+			    mq_datagar:	     	$("#mq_datagar").val(),
+				mq_mschave:	     	$("#mq_mschave").val(),
+				mq_ip:	     		$("#mq_ip").val(),
+				mq_servsn:	     	$("#mq_servsn").val(),
+				mq_licenca:			$("input[name=mq_licenca]:checked").val(),   
+				mq_servtp:			$("input[name=mq_servtp]:checked").val(),   
+				mq_servcluster:		$("input[name=mq_servcluster]:checked").val()   
+							 
+				},function(data){
+					if (data.status == "OK") {
+						$("<div></div>").addClass("alert alert-success alert-dismissable").html('<i class="fa fa-check"></i> ('+data.mensagem+') <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#mens");
+						$("#cad_Servidor")[0].reset();
+						console.log(data.query);
+						$("#tb_servidor").load("at_tbServidor.php");// atualiza a pagina com o campo inserido 
+		 			}
+					else { 
+						$("<div></div>").addClass("alert alert-warning alert-dismissable").html('<i class="fa fa-warning"></i> Nome j&aacute; cadastrado <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>').appendTo("#mens");
+					}
+					$("#btn_cadServidor").html("<i class='fa fa-save'></i> Salvar");
+				}, "json");
+			}
+		}); 
+/*---------------|FIM DO CADASTRO DE SERVIDOR |------------------*/		
+
+/*------------------------|FUNÇÂO GERAR QRCODE  DE  SERVIDOR|-----------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+	$(document.body).on("click","#btn_qrcodeSR",function(){
+			console.log("CLICK OK");
+			var token = $("#token").val();
+			var lista = $("#lista").val(); 
+			cod = $("#mq_id").val();
+			
+			
+			$.post("../images/qrcode_img/acao_Qrcode.php",{ 
+				acao: "Gerar_qrcodeMq",
+				mq_id: cod,  
+				  
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");
+					$(location).attr('href','at_ger_Servidor.php?token='+token+'&acao=N&mqid='+cod); 
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});	
+ 	
+	
+	
+	/*---------------|FIM DE FUNÇÂO GERAR QRCODE  DE  SERVIDOR|------------------*/	
+
+/*------------------------|ALTERAR  SERVIDOR|-----------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		
+ 	$(document.body).on("click","#btn_AltServidor",function(){
+			console.log("CLICK"); 
+			var token = $("#token").val();
+			var lista = $("#lista").val();
+			cod = $("#mq_id").val(); 
+			
+			
+			$.post("../controller/sys_acao.php",{ 
+				acao: "Altera_Servidor",
+				mq_id: cod,
+				mq_servobs:      $("#mq_servobs").val(),
+				mq_nome:         $("#mq_nome").val(),
+				mq_tag:    		 $("#mq_tag").val(),				
+				mq_proc:   		 $("#mq_proc").val(),
+				sel_mqmemoria:   $("#sel_mqmemoria").val(),
+				sel_mqhd:        $("#sel_mqhd").val(),
+				sel_mqos:        $("#sel_mqos").val(),				
+				sel_mqstatus:    $("#sel_mqstatus").val(),
+				mq_valor:        $("#mq_valor").val(),
+				mq_nf:           $("#mq_nf").val(),
+				mq_ip:           $("#mq_ip").val(),
+				mq_servsn:	   	 $("#mq_servsn").val(),
+				mq_datagar:	     $("#mq_datagar").val(),
+				mq_mschave:    	 $("#mq_mschave").val(),
+				mq_licenca:		 $("input[name=mq_licenca]:checked").val(),   
+				mq_servtp:		 $("input[name=mq_servtp]:checked").val(),   
+				mq_servcluster:	 $("input[name=mq_servcluster]:checked").val()		
+				
+				 
+			},
+			function(data){ 
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");
+					location.reload();  
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});
+	/*---------------|FIM DE ALTERAR SERVIDOR|------------------*/	
+	
+/*------------------------|DESATIVAR  SERVIDOR|-----------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		$(document.body).on("click","#btn_Desativar_serv",function(){
+			console.log("CLICK OK");
+			var token = $("#token").val();
+			var lista = $("#lista").val();
+			cod = $("#mq_id").val();
+			
+			
+			$.post("../controller/sys_acao.php",{ 
+				acao: "Desativar_servidor",
+				mq_id: cod
+				
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");
+					$(location).attr('href','at_servidor_desativados.php?token='+token); 
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});
+			
+	/*---------------|FIM DE DESATIVAR SERVIDOR|------------------*/
+	
+/*------------------------|ATIVAR  SERVIDOR|-----------------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+		$(document.body).on("click","#btn_Ativar_serv",function(){
+			console.log("CLICK OK");
+			var token = $("#token").val();
+			var lista = $("#lista").val();
+			cod = $("#mq_id").val();
+			
+			
+			$.post("../controller/sys_acao.php",{ 
+				acao: "Ativar_servidor",
+				mq_id: cod
+				
+			},
+			function(data){
+				if(data.status=="OK"){
+					$("#confirma").modal("hide");
+					$("#aguarde").modal("show");					
+					$(location).attr('href','at_ger_Servidor.php?token='+token+'&acao=N&mqid='+cod); 					
+				} 
+				else{
+					alert(data.mensagem);	
+				}
+			},
+			"json");
+		});
+			
+	/*---------------|FIM DE ATIVAR SERVIDOR|------------------*/	
+	
+/*---------------|RELATORIO DE SERVIDORES TOTAIS|-----------------------*\  
+	| Author: 	Cleber Marrara Prado 								|
+	| Version: 	1.0 												|
+	| Email: 	cleber.marrara.prado@gmail.com 						|
+	| Date: 														|
+	\*-------------------------------------------------------------*/
+		$(document.body).on("click","#bt_relSR_total", function(){
+			var tabela 	= $("#rel_tbl_total").val();
+			if(tabela == ""){
+				alert("Preencha o campo Tabela!"); 
+			} 
+			else{
+				$(this).html("<i class='fa fa-spin fa-spinner'></i> Gerando...");
+		
+				$("#rls").load('corpo_rel_SR_total.php?tabela='+tabela);
+				$("#bt_print").attr({
+					'href':'rel_print_sr_total.php?tabela='+tabela
+				});
+				$("#bt_excel").attr({
+					'href':'rel_excel_sr_total.php?tabela='+tabela
+				}); 
+				console.log('corpo_rel_SR_total.php?tabela='+tabela);			
+			} 
+			$(this).html("<i class='fa fa-file-pdf-o'></i> Gerar Relatorio");
+		});
+	
+/*---------------|FIM |------------------*/
 	
 /*---------------|FIM DA FUNCAO|------------------*/		
 });	

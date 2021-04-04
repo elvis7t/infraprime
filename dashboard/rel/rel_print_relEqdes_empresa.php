@@ -32,7 +32,7 @@ require_once("../model/recordset.php");
 								$rs->FreeSql($sql);
 								$rs->GeraDados();   
 								?>
-						<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_logo');?>" alt="Logo da Empresa"></small> 
+						<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="<?=$hosted;?>/dashboard/<?=$rs->fld('emp_logo');?>" alt="Logo da Empresa"></small> 
 							<?=$rs->fld("emp_nome");?>  
 						<small class="pull-right">Data: <?=date("d/m/Y");?></small>
 					</h2>
@@ -82,7 +82,7 @@ require_once("../model/recordset.php");
 		</div><!-- ./wrapper -->
 
 		<!-- AdminLTE App -->
-		<script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+		<script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
 	</body>
 </html>
 

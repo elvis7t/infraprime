@@ -10,7 +10,7 @@ $sql ="	SELECT * FROM at_maquinas a
 			JOIN eq_tipo        e ON a.mq_tipoId = e.tipo_id
 			JOIN at_status      f ON a.mq_statusId = f.status_id
 			JOIN mq_os          g ON a.mq_osId =    g.os_id
-		WHERE mq_ativo <> 1"; 
+		WHERE mq_ativo = '1' AND  mq_tipoId NOT IN  ('10','51','84','85','86','87')"; 
 		$rs->FreeSql($sql);
 		
 if($rs->linhas==0):
@@ -27,28 +27,21 @@ while($rs->GeraDados()){ ?>
 		<td><?=$rs->fld("mq_nome");?></td> 
 		<td><p 	class="<?=$rs->fld("status_color");?>"><i class="<?=$rs->fld("status_classe");?>"></i></p></td>
 		<td><?=$rs->fld("os_desc");?></td>   
+		<td><?=$rs->fld("mq_tag");?></td>   
 		<td><?=$rs->fld("usu_nome");?></td>
 		<td><i class="fa fa-check-square-o text-success"></i></td> 
-	<td>   
-			<div class="button-group">  
-				
-				 
+		<td>   
+			<div class="button-group">			 
 				<?php 
 					if($rs->fld("mq_ativo")==1 AND $rs->fld("mq_usuId")==0): ?>
-					<a 	class="btn btn-xs btn-success" data-toggle='tooltip' data-placement='bottom' title='Add'  a href="at_atr_Mq.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>"><i class="fa fa-plug"></i></a>
-					
+					<a 	class="btn btn-xs btn-success" data-toggle='tooltip' data-placement='bottom' title='Add'  a href="at_atr_Mq.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>"><i class="fa fa-plug"></i></a>					
 					<?php else: ?>
 					<a 	class="btn btn-xs btn-info" data-toggle='tooltip' data-placement='bottom' title='Gerenciar'  a href="at_ger_Mq.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>"><i class="fa fa-dashboard"></i></a>
-					
-					<?php
-					endif;
-					?> 
+					<?php endif; ?> 
 				<!--<a 	class="btn btn-danger btn-xs" data-toggle='tooltip'  data-placement='bottom' title='Excluir' a href='javascript:del(<?=$rs->fld("eq_id");?>,"exc_Eq","o item");'><i class="fa fa-trash"></i></a> -->
-				<a 	class="btn btn-xs btn-danger" data-toggle='tooltip' data-placement='bottom' title='descartar'  a href="at_descartar_Mq.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>"><i class="fa fa-recycle"></i></a> 
-				
+				<a 	class="btn btn-xs btn-danger" data-toggle='tooltip' data-placement='bottom' title='descartar'  a href="at_descartar_Mq.php?token=<?=$_SESSION['token']?>&acao=N&mqid=<?=$rs->fld('mq_id');?>"><i class="fa fa-recycle"></i></a> 				
 			</div>  
-		</td> 
-		
+		</td>		
 	</tr>	
 <?php }
 endif; 

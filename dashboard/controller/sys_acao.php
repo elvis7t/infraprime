@@ -102,7 +102,7 @@ if($acao == "altitimagem"){
 
 if($acao == "cadEmpresas"){
 	//Busca informação no bando se o nome já exixte
-		$rs->seleciona("emp_cnpj","at_empresas","mq_nome='{$emp_cnpj}'");
+		$rs->seleciona("emp_cnpj","at_empresas","emp_nome='{$emp_cnpj}'");
 		if($rs->linhas<>0){
 			$resul['status'] = "Erro";
 			$resul['status'] = "Nome j&aacute; cadastrado";
@@ -126,6 +126,8 @@ if($acao == "cadEmpresas"){
 		$dados["emp_email"]	    = $emp_email; 
 		$dados["emp_tel"]		= $emp_tel; 
 		$dados["emp_site"]		= $emp_site;   
+		$dados["emp_logo"]		= "";   
+		$dados["emp_img_trm"]	= "";   
 											
 	if(!$rs->Insere($dados,"at_empresas")){
 		$resul['status'] = "OK";
@@ -165,6 +167,8 @@ if($acao == "Altera_emp"){
 	$dados["emp_email"]	    = $emp_email; 
 	$dados["emp_tel"]		= $emp_tel; 
 	$dados["emp_site"]		= $emp_site; 
+	$dados["emp_logo"]		= "";   
+	$dados["emp_img_trm"]	= "";  
 	$whr = "emp_id=".$emp_id; 
 	
 	if(!$rs->Altera($dados, "at_empresas",$whr)){ 
@@ -321,11 +325,14 @@ if($acao == "cadUsuarios"){
 			$resul['mensagem'] = $rs->sql;  
 		}ELSE{
 		$cod = $rs->autocod("usu_id","at_usuarios");
-		$dados['usu_id']      = $cod;
-		$dados["usu_empId"]	  = $sel_emp; 
-		$dados["usu_dpId"]    = $sel_dp; 
-		$dados["at_usu_nome"] = trim($usu_nome);
-		$dados["usu_ativo"]   = "1";	
+		$dados['usu_id']       = $cod;
+		$dados["usu_empId"]	   = $sel_emp; 
+		$dados["usu_dpId"]     = $sel_dp; 
+		$dados["at_usu_nome"]  = trim($usu_nome);
+		$dados["at_usu_foto"]  = "/images/perfil/Per_1.png";
+		$dados["at_usu_chapa"] = trim($usu_chapa);
+		$dados["at_usu_cargo"] = trim($usu_cargo);
+		$dados["usu_ativo"]    = "1";	
 	
 	
 	if(!$rs->Insere($dados,"at_usuarios")){
@@ -343,7 +350,6 @@ if($acao == "cadUsuarios"){
 }
 /*---------------|FIM DO CADASTRO DE USUARIOS ATIVOS |------------------*/	
 
-
 /*---------------|FUNCAO PARA ALTERAR USUARIOS ATIVOS|--------------\
 	|	Author: 	Cleber Marrara Prado							| 
 	|	E-mail: 	cleber.marrara.prado@gmail.com					|
@@ -352,8 +358,48 @@ if($acao == "cadUsuarios"){
 	\--------------------------------------------------------------*/ 
 
 if($acao == "Altera_usu"){
-	$dados['usu_dpId']	    = $usu_dpId;	   
+	$dados["usu_empId"]	    = $sel_emp;
+	$dados['usu_dpId']	    = $sel_dp;	   
 	$dados['at_usu_nome']	= trim($usu_nome);  
+	$dados['at_usu_chapa']	= trim($usu_chapa);  
+	$dados['at_usu_cargo']	= trim($usu_cargo);   
+	$dados['usu_ativo']	    = $usu_ativo; 
+	$whr = "usu_id=".$usu_id; 
+	
+	if(!$rs->Altera($dados, "at_usuarios",$whr)){ 
+
+	$resul['status'] = "OK";
+
+	$resul['mensagem'] = "Usu&aacuterio atualizado!"; 
+
+	 $resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	
+	 
+
+/*---------------|FIM DO ALTERA A USUARIOS ATIVOS |------------------*/	
+
+
+/*---------------|FUNCAO PARA ALTERAR USUARIOS ATIVOS|--------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+
+if($acao == "Altera_usu"){ 
+	$dados["usu_empId"]	    = $sel_emp;
+	$dados['usu_dpId']	    = $sel_dp;	   
+	$dados['at_usu_nome']	= $usu_nome;  
+	$dados['at_usu_chapa']	= $usu_chapa;  
+	$dados['at_usu_cargo']	= $usu_cargo;   
 	$dados['usu_ativo']	    = $usu_ativo; 
 	$whr = "usu_id=".$usu_id; 
 	
@@ -525,7 +571,7 @@ if($acao == "cad_Marca"){
 }
 /*---------------|FIM DO CADASTRO MARCA |------------------*/
 	
-/*---------------|FUNCAO PARA ALTERAR MARCA|--------------\
+/*---------------|FUNCAO PARA ALTERAR MARCA|------------------------\
 	|	Author: 	Cleber Marrara Prado							| 
 	|	E-mail: 	cleber.marrara.prado@gmail.com					|
 	|	Version:	1.0												|
@@ -762,19 +808,20 @@ if($acao == "Atribuir_Eq"){
 
 if($acao == "Atribuir_Eq_mailSender"){
 /////////////////////EOVG MOUSE	
-if($emp_id ==1 OR $emp_id ==2 OR $emp_id ==9 ){$emp_id;}ELSE{$emp_id ==0;}
+if($emp_id ==1 OR $emp_id ==2 OR $emp_id ==9 ){$emp_id;}ELSE{$emp_id =="";}
 $sql = "SELECT *
 FROM at_equipamentos
 WHERE eq_desc='".$eq_desc."' AND eq_ativo = '1'
 AND eq_usuId = 0 
 AND eq_mqId  = 0
+AND eq_statusId <> 7
 AND eq_empId =".$emp_id;
 
 $rs->FreeSql($sql);
 $rs->GeraDados();
 if($rs->linhas == 0 ){	
-	if($emp_id ==1){$destino = "Renata"; $email ="rfsouza@niff.com.br";}
-	if($emp_id == 2 OR $emp_id == 9){ $destino = "Vinicius"; $email ="vfreis@vilagalvao.com.br";}	
+	if($emp_id ==1){$destino = "Alexandre"; $email ="aasilva@niff.com.br";}
+	if($emp_id == 2 OR $emp_id == 9){ $destino = "Edmilson"; $email ="ercarmo@vilagalvao.com.br";}	
 	if($eq_desc=="Mouse"){$Solicitacao = "Solicitamos a compra de : 3 Mouses Logitech M90";}
 	if($eq_desc=="Teclado"){$Solicitacao = "Solicitamos a compra de : 3 Teclados Logitech K120";}
 	if($eq_desc=="Telefone"){$Solicitacao = "Solicitamos a compra de : 3 Telefones Intelbras TC 50 PREMIUM";}
@@ -817,7 +864,7 @@ if($rs->linhas == 0 ){
 		$dados2["comp_valor"]	   = "00"; 
 		$dados2["comp_desc"]       = $Solicitacao; 
 		$dados2["comp_datacad"]	   = date('Y-m-d'); 
-		$dados2["comp_datafin"]	   = '00/00/0000'; 				
+		$dados2["comp_datafin"]	   = '01/01/0001'; 				
 		$dados2["comp_ativo"]	   = "1"; 
 		$dados2["comp_statusId"]   = "2";
 		$dados2["comp_usucad"]     = $_SESSION['usu_cod'];        
@@ -1007,6 +1054,7 @@ if($acao == "Descartar_Eq"){
 	$dados['eq_statusId']	= "4"; 
 	$dados["eq_datades"]    = date('Y-m-d H:i:s');	
 	$dados['eq_ativo']  	= "0";  	
+	$dados['Id_inst']  		= "0";  	
 	$dados['eq_usudes']  	= $_SESSION['usu_cod']; 
 	$whr = "eq_id=".$eq_id; 
 	 
@@ -1255,7 +1303,7 @@ if($acao == "cadEqsolicitacao"){
 		$dados["solic_eqId"]       = $eq_id;	  	
 		$dados["solic_dpId"]       = $sol_dp; 	
 		$dados["solic_usuId"]      = $sol_usu;			
-		$dados["solic_mqId"]       = $sol_mq;			
+		$dados["solic_mqId"]       = $sl_mq;			
 		$dados["solic_ticket"]     = $solic_ticket;			
 		$dados["solic_desc"]       = $solic_desc;			
 		$dados["solic_data"]       = date('Y-m-d H:i:s');		
@@ -1456,7 +1504,7 @@ if($acao == "cadmanu"){
 	  //$dados["man_equsuId"]		= "0"; 
 	  //$dados["man_eqmqId"]		= "0"; 		
 		$dados["man_dataida"]   	= date('Y-m-d H:i:s');		
-	    $dados["man_dataretorno"]   = '00/00/0000';		
+	    $dados["man_dataretorno"]   = '01/01/0001';		
 	  //$dados["man_obs"]   		= '0';		
 		$dados["man_usucad"]    	= $_SESSION['usu_cod'];
 		$dados["man_ativo"]			= "1";	
@@ -1510,7 +1558,7 @@ if($acao == "Altera_StatusEq"){
 
 if($acao == "Alt_ManEquipamanto"){
 		if($man_dataretorno==''){
-			$man_dataretorno       = '00/00/0000';
+			$man_dataretorno       = "01/01/0001";
 		}			
 		$dados["man_valor"]				= $man_valor; 
 		$dados["man_os"] 				= $man_os; 
@@ -1868,6 +1916,35 @@ if($acao == "cad_Mem"){
 }
 /*---------------|FIM DO CADASTRO MEMORIA |------------------*/
 
+/*---------------|FUNCAO PARA ALTERAR MEMORIA|--------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+
+if($acao == "Altera_Memoria"){
+	$dados['mem_tipo']	= $mem_tipo;	
+	$dados['mem_cap']	= $mem_cap;	
+	$whr = "mem_id=".$mem_id; 
+	
+	if(!$rs->Altera($dados, "mq_memoria",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Fabricante atualizado!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	
+	 
+
+/*---------------|FIM DO ALTERA MEMORIA |------------------*/	
+
 
 /*---------------|FUNCAO PARA EXCLUIR MEMORIA|--------------\
 	| Autor: cleber Marrara Prado                                   |
@@ -1966,6 +2043,10 @@ if($acao == "cadMaquinas"){
 		$dados["mq_empId"]        = $sel_empeq; 		
 		$dados["mq_tipoId"]       = $sel_tipoeq;		
 		$dados["mq_fabId"]        = $sel_fabmq;	  	
+		$dados["mq_dpId"]         = "0";	  	
+		$dados["mq_usuempId"]     = "0";	  	
+		$dados["mq_usuId"]        = "0";	  	
+		$dados["mq_descmotivo"]   = " ";	  	
 		$dados["mq_modelo"]       = $mq_modelo;	  	
 		$dados["mq_nome"]         = trim($mq_nome);		
 		$dados["mq_tag"]          = $mq_tag; 	
@@ -1981,6 +2062,7 @@ if($acao == "cadMaquinas"){
 		$dados["mq_datacad"]      = $fn->data_usa($mq_datacad);
 		$dados["mq_datagar"]      = $fn->data_usa($mq_datagar);  		
 		$dados["mq_usucad"]       = $_SESSION['usu_cod']; 
+		$dados["mq_mschave"]      = $mq_mschave;
 		$dados["mq_licenca"]      = $mq_licenca; 
 		
 		 
@@ -2043,7 +2125,8 @@ if($acao == "Atribuir_Mq"){
 
 if($acao == "Altera_Mq"){
 		$dados["mq_nome"]			= trim($mq_nome);   
-		$dados["mq_tag"]			= $mq_tag;  
+		$dados["mq_tag"]			= $mq_tag; 
+		$dados["mq_mschave"]		= $mq_mschave;  	
 		$dados["mq_proc"] 	        = $mq_proc;	
 		$dados["mq_memId"]		    = $sel_mqmemoria; 	
 		$dados["mq_hdId"]			= $sel_mqhd; 	
@@ -2272,7 +2355,7 @@ if($acao == "cadMqmanutencao"){
 		$dados["man_ticket"]	    = $man_ticket; 		
 		$dados["man_ativo"]			= "1";
 		$dados["man_dataida"]   	= date('Y-m-d H:i:s');		
-		$dados["man_dataretorno	"]  = '00/00/0000';		
+		$dados["man_dataretorno	"]  = '01/01/0001';		
 		$dados["man_usucad"]    	= $_SESSION['usu_cod'];         
 		
 											
@@ -2340,7 +2423,7 @@ if($acao == "cadMqmanutencaolocal"){
 		$dados["man_ticket"]	    = $cod; 		
 		$dados["man_ativo"]			= "1";
 		$dados["man_dataida"]   	= date('Y-m-d H:i:s');		
-		$dados["man_dataretorno	"]  = '00/00/0000';		
+		$dados["man_dataretorno	"]  = '01/01/0001';		
 		$dados["man_usucad"]    	= $_SESSION['usu_cod'];         
 		
 											
@@ -2393,7 +2476,7 @@ if($acao == "Altera_StatusMamMq"){
 
 if($acao == "Alt_ManMaquina"){
 	
-		$dados['man_dataretorno']      = '00/00/0000';	
+		$dados['man_dataretorno']      = '01/01/0001';	
 		$dados["man_desc"]				= $man_desc; 
 		$dados["man_obs"]				= $man_obs; 
 	 	
@@ -2525,7 +2608,8 @@ if($acao == "Descartar_Mq"){
 	$dados['mq_statusId']	= "4"; 	 
 	$dados['mq_descmotivo']	= $mq_descmotivo; 
 	$dados["mq_datades"]    = date('Y-m-d H:i:s');	
-	$dados['mq_ativo']  	= "0";  	 
+	$dados['mq_ativo']  	= "0";  
+	$dados['Id_inst']  		= "0";  		
 	$dados['mq_usudes']  	= $_SESSION['usu_cod']; 	 
 	$whr = "mq_id=".$mq_id; 
 	
@@ -2643,7 +2727,7 @@ if($acao == "cadeqEmpre"){
 		$dados["empre_usudpId"]    = $sol_dp;
 		$dados["empre_usuId"]	   = $sol_usu; 
 		$dados["empre_datade"]	   = $fn->data_usa($empre_datade); 
-		$dados["empre_dataate"]	   = "00/00/0000"; 			
+		$dados["empre_dataate"]	   = "01/01/0001"; 			
 		$dados["empre_ticket"]	   = $empre_ticket;
 		$dados["empre_ativo"]	   = "1"; 
 		$dados["empre_usucad"]     = $_SESSION['usu_cod'];        
@@ -2764,7 +2848,7 @@ if($acao == "cadMqempre"){
 		$dados["empre_usudpId"]    = $sol_dp;
 		$dados["empre_usuId"]	   = $sol_usu; 
 		$dados["empre_datade"]	   = $fn->data_usa($empre_datade); 		
-		$dados["empre_dataate"]	   = "00/00/0000"; 		
+		$dados["empre_dataate"]	   = "01/01/0001"; 		
 		$dados["empre_ticket"]	   = $empre_ticket;
 		$dados["empre_ativo"]	   = "1"; 
 		$dados["empre_usucad"]     = $_SESSION['usu_cod'];        
@@ -2872,7 +2956,7 @@ if($acao == "Altera_Status_Mqemp"){
 	\--------------------------------------------------------------*/
 
 if($acao == "cadCompras"){
-	 
+	if($sel_emp ==1) {$statusId ='2';} ELSE {$statusId ='1';} 
 	$cod = $rs->autocod("comp_id","at_compras");
 		$dados['comp_id']    	   = $cod;
 		$dados["comp_empId"]       = $sel_emp; 
@@ -2881,9 +2965,9 @@ if($acao == "cadCompras"){
 		$dados["comp_valor"]	   = $comp_valor; 
 		$dados["comp_desc"]        = $comp_desc; 
 		$dados["comp_datacad"]	   = $fn->data_usa($comp_datacad); 		
-		$dados["comp_datafin"]	   = '00/00/0000'; 		
+		$dados["comp_datafin"]	   = '01/01/0001'; 		
 		$dados["comp_ativo"]	   = "1"; 
-		$dados["comp_statusId"]	   = "1"; 
+		$dados["comp_statusId"]	   = $statusId;  
 		$dados["comp_usucad"]      = $_SESSION['usu_cod'];        
 		
 											
@@ -2911,14 +2995,18 @@ if($acao == "cadCompras"){
 	\--------------------------------------------------------------*/
 
 if($acao == "interagir_comp"){
-	 
+	if($sel_status ==1) {$statusId ='2';} 
+	if($sel_status ==2) {$statusId ='3';} 
+	if($sel_status ==3) {$statusId ='7';} 
+	if($sel_status ==7) {$statusId ='4';} 
+	
 	$cod = $rs->autocod("compobs_id","comp_obs");
 		$dados['compobs_id']        = $cod;
 		$dados["compobs_compId"]    = $comp_id; 
 		$dados["compobs_usuId"]     = $_SESSION['usu_cod'];
 		$dados["compobs_data"]	    = date("Y-m-d H:i:s") ;	
 		$dados["compobs_obs"]	    = $comp_obs;	
-		$dados["compobs_statusId"]	= $sel_status; 
+		$dados["compobs_statusId"]	= $statusId; 
 		
 		
 											
@@ -2933,6 +3021,30 @@ if($acao == "interagir_comp"){
 	} 
 	echo json_encode($resul);
 	exit;
+}
+
+if($acao == "Alt_compStatus"){
+	if($sel_status ==1) {$statusId ='2';} 
+	if($sel_status ==2) {$statusId ='3';} 
+	if($sel_status ==3) {$statusId ='7';} 
+	if($sel_status ==7) {$statusId ='4';} 
+	
+	$dados["comp_statusId"]	= $statusId; 	 
+		 	
+	$whr = "comp_id=".$comp_id; 
+	
+	if(!$rs->Altera($dados, "at_compras",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = " atualizada!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}  
+	else{    
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	   
+	echo json_encode($resul);
+    exit;
 }
 
 
@@ -3543,6 +3655,7 @@ if($acao == "Outros_Mq"){
 	$dados['mq_usuEmpId']	= '0'; 	   
 	$dados['mq_dpId']		= '0'; 	
 	$dados['mq_usuId']		= '0'; 
+	$dados['mq_ativo']		= '0'; 
 	$dados['mq_statusId']	= "7"; 	 
 	$dados['mq_descmotivo']	= $mq_descmotivo; 
 	$dados["mq_datades"]    = date('Y-m-d H:i:s');	
@@ -3607,6 +3720,263 @@ if($acao == "Outros_Eq"){
 }	
 
 /*---------------|FIM DE OUTRAS OCORRENCIAS DE EQUIPAMENTOS|-----------------------*\
+
+/*---------------|FUNCAO PARA CADASTRA SERVIÇO|--------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/
+
+if($acao == "cad_Servico"){ 
+		$cod = $rs->autocod("servico_id","sr_servico");
+		$dados['servico_id']   			= $cod;
+		$dados['servico_servidorId']   	= $servico_servidorId;
+		$dados["servico_desc"]  		= $servico_desc;   
+		$dados["servico_versao"]  		= $servico_versao;   
+		$dados["servico_licenca"]    	= $servico_licenca;   
+		 
+	if(!$rs->Insere($dados,"sr_servico")){
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Servico cadastrado com sucesso!";
+	} 
+	else{
+		$resul['status'] = "Erro";
+		$resul['mensagem'] = $rs->sql;     
+		  
+	}
+	echo json_encode($resul);
+	exit;
+}
+/*---------------|FIM DO CADASTRO SERVIÇO |------------------*/
+
+/*---------------|FUNCAO PARA ALTERAR SERVIÇO|----------------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+ 
+if($acao == "Altera_Servico"){
+	$dados['servico_desc']		= $servico_desc;	
+	$dados['servico_versao']	= $servico_versao;	
+	$dados['servico_licenca']	= $servico_licenca;	
+	$whr = "servico_id=".$servico_id; 
+	
+	if(!$rs->Altera($dados, "sr_servico",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Servico atualizado!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	    
+	 
+
+/*---------------|FIM DO ALTERA SERVIÇO|------------------*/	
+
+/*---------------|FUNCAO PARA EXCLUIR SERVIÇO|----------------------\
+	| Autor: cleber Marrara Prado                                   |
+	| Version:  1.0                                                 |
+	| Email: cleber.Marrara.Prado@gmail.com                         |											
+	|	Date:       30/11/2016						   				|
+	\--------------------------------------------------------------*/
+
+if($acao == "exclui_Servico"){    
+	
+	if(!$rs->Exclui("sr_servico","servico_id=".$servico_id)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Dados Excluidos!"; 
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul); 
+    exit;
+}
+/*---------------|FIM DO EXCLUIR SERVIÇO |------------------*/	
+
+/*---------------|FUNCAO PARA CADASTRAR SERVIDOR|--------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/
+
+if($acao == "cadServidor"){ 
+		//Busca informação no bando se o nome já exixte
+		$rs->seleciona("mq_nome","at_maquinas","mq_nome='{$mq_nome}'");
+		if($rs->linhas<>0){
+			$resul['status'] = "Erro";
+			$resul['status'] = "Nome j&aacute; cadastrado";
+			$resul['mensagem'] = $rs->sql;  
+		}ELSE{
+		$cod = $rs->autocod("mq_id","at_maquinas");
+		
+		$dados['mq_id']           = $cod;		
+		$dados["mq_empId"]        = $sel_empeq; 		
+		$dados["mq_tipoId"]       = $sel_tipoeq;		
+		$dados["mq_fabId"]        = $sel_fabmq;	  	
+		$dados["mq_dpId"]         = "0";	  	
+		$dados["mq_usuempId"]     = "0";	  	
+		$dados["mq_usuId"]        = "0";	  	
+		$dados["mq_descmotivo"]   = " ";
+        $dados["mq_officeId"]     = "0";		  	
+        $dados["sr_servicoId"]    = "0";		  	
+		$dados["mq_modelo"]       = $mq_modelo;	  	
+		$dados["mq_nome"]         = trim($mq_nome);		
+		$dados["mq_tag"]          = $mq_tag; 	
+		$dados["mq_memId"]        = $sel_mqmemoria;			
+		$dados["mq_hdId"]         = $sel_mqhd;			
+		$dados["mq_proc"]         = $mq_proc;			
+		$dados["mq_osId"]         = $sel_mqos;								
+		$dados["mq_statusId"]     = $sel_mqstatus;			
+		$dados["mq_nf"]           = $mq_nf;			
+		$dados["mq_valor"]        = $mq_valor;			
+		$dados["mq_ativo"]        = "1";			
+		$dados["mq_datacad"]      = $fn->data_usa($mq_datacad);
+		$dados["mq_datagar"]      = $fn->data_usa($mq_datagar);  		
+		$dados["mq_usucad"]       = $_SESSION['usu_cod']; 
+		$dados["mq_licenca"]      = $mq_licenca; 
+		$dados["mq_mschave"]      = $mq_mschave;
+		$dados["mq_ip"]           = $mq_ip;
+		$dados["mq_servtp"]       = $mq_servtp; 
+		$dados["mq_servtp"]       = $mq_servtp; 
+		$dados["mq_servcluster"]  = $mq_servcluster; 
+		
+		 
+	if(!$rs->Insere($dados,"at_maquinas")){
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Servidor cadastrado com sucesso!"; 
+	} 
+	else{
+		$resul['status'] = "Erro";
+		$resul['mensagem'] = $rs->sql;        
+		  
+	}
+		}
+	echo json_encode($resul);
+	exit;
+}
+/*---------------|FIM DO CADASTRO SERVIDOR|--------------\ 
+
+/*---------------|FUNCAO PARA ALTERAR SERVIDOR|---------------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+
+if($acao == "Altera_Servidor"){
+		
+		if ($mq_servcluster=='') {
+		$cluster = '0';
+		} elseif ($mq_servtp == 'f' ) {
+		$cluster = '1';
+		} else {
+		$cluster = $mq_servcluster;
+		}	
+		$dados["mq_nome"]			= trim($mq_nome);   		 
+		$dados["mq_servsn"]         = $mq_servsn;	
+		$dados["mq_tag"]			= $mq_tag;		  	
+		$dados["mq_proc"] 	        = $mq_proc;	
+		$dados["mq_memId"]		    = $sel_mqmemoria; 	
+		$dados["mq_hdId"]			= $sel_mqhd; 	
+		$dados["mq_osId"]			= $sel_mqos;  		
+		$dados["mq_statusId"]		= $sel_mqstatus;		
+		$dados["mq_valor"]			= $mq_valor; 	
+		$dados["mq_nf"]				= $mq_nf;
+		$dados["mq_licenca"]        = $mq_licenca; 
+		$dados["mq_mschave"]		= $mq_mschave;		
+		$dados["mq_ip"]             = $mq_ip;
+		$dados["mq_servtp"]         = $mq_servtp; 
+		$dados["mq_servcluster"]    = $cluster; 
+		$dados['mq_datagar']        = $fn->data_usa($mq_datagar);  
+		$dados["mq_servobs"]		= trim($mq_servobs);  
+	 	
+	$whr = "mq_id=".$mq_id; 
+	
+	if(!$rs->Altera($dados, "at_maquinas",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "atualizado!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	
+	 
+
+/*---------------|FIM DO ALTERA SERVIDOR |------------------*/
+
+/*---------------|FUNCAO PARA DESATIVAR SERVIDOR|------------------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+
+if($acao == "Desativar_servidor"){
+	$dados['mq_ativo']		= '0';	
+	$dados['mq_statusId']	= '8';
+	$whr = "mq_id=".$mq_id; 
+	
+	if(!$rs->Altera($dados, "at_maquinas",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Servidor Desativado!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	
+	 
+
+/*---------------|FIM DO DESATIVAR SERVIDOR |------------------*/
+
+/*---------------|FUNCAO PARA DESATIVAR SERVIDOR|------------------------\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
+ 
+if($acao == "Ativar_servidor"){
+	$dados['mq_ativo']		= '1';	
+	$dados['mq_statusId']	= '2';	
+	$whr = "mq_id=".$mq_id; 
+	
+	if(!$rs->Altera($dados, "at_maquinas",$whr)){ 
+		$resul['status'] = "OK";
+		$resul['mensagem'] = "Servidor Ativado!"; 
+		$resul['sql'] = $rs->sql;
+		  
+	}
+	else{
+		$resul['mensagem']	= "Ocorreu um erro..."; 
+		$resul['sql']		= $rs->sql;  
+	}	
+	echo json_encode($resul);
+    exit;
+}	
+	 
+
+/*---------------|FIM DO DESATIVAR SERVIDOR |------------------*/
 
 
 /*---------------|FIM DA FUNCAO |------------------*/	

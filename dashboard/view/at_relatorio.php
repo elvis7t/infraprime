@@ -1,7 +1,6 @@
 <?php
 //sujeira embaixo do tapete :(
 error_reporting(E_ALL & E_NOTICE & E_WARNING);
-
 /*inclusão dos principais itens da página */
 session_start();
 $sess = "REL";
@@ -12,7 +11,6 @@ require_once("../config/mnutop.php");
 require_once("../config/menu.php");
 require_once("../config/modals.php");
 require_once("../class/class.functions.php");
-
 $rs_rel = new recordset();
 ?>
 
@@ -77,23 +75,23 @@ $rs_rel = new recordset();
 		require_once("../config/footer.php");
 	?></div><!-- ./wrapper -->
 
-<script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
    <!-- Slimscroll -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
-    <script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/jquery.cookie.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/controle.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/action_ativos.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/jquery.cookie.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/controle.js"></script>
 
 	<!-- SELECT2 TO FORMS
 	-->

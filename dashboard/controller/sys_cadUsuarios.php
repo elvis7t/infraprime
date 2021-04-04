@@ -67,6 +67,7 @@ if($acao == "cadusuarios"){
 	$dados["usu_dpId"] 	    = $sel_dp ;
 	$dados["usu_classe"] 	= $usu_classe;
 	$dados["usu_email"] 	= $usu_email;
+	$dados["usu_perm"]  	= "0";
 	$dados['usu_foto']	    = "/assets/perfil/masc.jpg" ;  
 	$dados["usu_ativo"] 	= "1";
 	$dados["usu_online"] 	= "0";
@@ -88,6 +89,11 @@ if($acao == "cadusuarios"){
 if($acao == "cadusuariosDados"){
 	
 	$dados["dados_usu_email"] 	= $usu_email;
+	$dados["dados_nome"] 	    = "0"; 
+	$dados["dados_cpf"] 	    = "0"; 
+	$dados["dados_rg"] 	        = "0"; 
+	$dados["dados_sexo"] 	    = "0"; 
+	
 
 		
 	if(!$rs->Insere($dados,"sys_dados_user")){
@@ -101,7 +107,7 @@ if($acao == "cadusuariosDados"){
 	}
 	echo json_encode($resul);
 	exit;
-}
+} 
 /*---------------|FIM CADASTRO DE USUARIOS|------------------*/	
 
 
@@ -117,7 +123,7 @@ if($acao == "cadusuariosDados"){
 
 if($acao == "altera_perfil"){
 
-	$arr_habil = implode(";",$habil);
+	$arr_habil = implode(";",$habil); 
 	//echo $arr_habil;
 	$dados["dados_escol"] 	= $escol;
 	$dados["dados_cep"] 	= $cep;

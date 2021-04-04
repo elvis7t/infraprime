@@ -10,8 +10,8 @@ $sql ="	SELECT * FROM at_maquinas a
 			JOIN eq_tipo        e ON a.mq_tipoId = e.tipo_id
 			JOIN at_status      f ON a.mq_statusId = f.status_id
 			JOIN mq_os          g ON a.mq_osId =    g.os_id
-		WHERE mq_ativo <>1  AND mq_usuId = 0 
-				AND mq_usuId = 0 
+			
+		WHERE mq_ativo = '1'  AND mq_usuId = 0 AND mq_statusId <> 7 
 				AND (
 				mq_empId =1
 				OR mq_empId =2

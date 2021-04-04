@@ -10,9 +10,11 @@ $sql ="	SELECT *
 				JOIN sys_usuarios d ON a.eq_usucad = d.usu_cod
 				JOIN eq_tipo      e ON a.eq_tipoId = e.tipo_id
 				JOIN at_status    f ON a.eq_statusId = f.status_id
-				WHERE eq_desc='Teclado' AND eq_ativo <>1
+				WHERE eq_desc='Teclado' 
+				AND eq_ativo = '1'
 				AND eq_usuId = 0 
 				AND eq_mqId  = 0
+				AND eq_statusId <> 7
 				AND (
 				eq_empId =1
 				OR eq_empId =2
@@ -61,7 +63,7 @@ while($rs->GeraDados()){ ?>
 <?php }
 endif; 
 ?>
-<script src="http://localhost/infraprime/dashboard/js/functions.js"></script>    
+<script src="<?=$hosted;?>/dashboard/js/functions.js"></script>    
 <script>
 // Atualizar a cada 10 segundos
 	 

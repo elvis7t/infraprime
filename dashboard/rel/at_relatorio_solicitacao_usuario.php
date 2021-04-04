@@ -45,12 +45,22 @@ $rs = new recordset();
 									<input type="hidden" value="eq_solicitacao" name="rel_tbl" id="rel_tbl">		
 									<div class="form-group col-xs-2">
 										<label for="rel_di">Data Inicial:</label>
-										<input type="text" class="form-control data_br" name="rel_di" id="rel_di" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+										<div class="input-group">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="data" class="form-control" name="rel_di" id="rel_di" value="">
+										</div>
 									</div>
 
 									<div class="form-group col-xs-2">
 										<label for="rel_df">Data Final:</label>
-										<input type="text" class="form-control  data_br" name="rel_df" id="rel_df" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+										<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+											<input type="data" class="form-control " name="rel_df" id="rel_df" value="">
+										</div>
 									</div>
 								</div>
 										
@@ -111,7 +121,7 @@ $rs = new recordset();
 										$rs->FreeSql($sql);
 										$rs->GeraDados(); 
 									?>
-										<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="http://localhost/infraprime/dashboard/<?=$rs->fld('emp_logo');?>" alt="Logo da Empresa"></small> 
+										<small class="pull-left"><img class="profile-user-img img-responsive img-circle" src="<?=$hosted;?>/dashboard/<?=$rs->fld('emp_logo');?>"alt="Logo da Empresa"></small> 
 											<?=$rs->fld("emp_nome");?>								
 									<small class="pull-right">Data: <?=date("d/m/Y");?></small></h3>
 								</div><!-- /.box-header -->
@@ -174,30 +184,48 @@ $rs = new recordset();
 		require_once("../config/footer.php");
 	?>
 	
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="http://localhost/infraprime/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootstrap datepicker -->
+	<script src="<?=$hosted;?>/dashboard/assets/plugins/datepicker/bootstrap-datepicker.js"></script>	
     <!-- FastClick -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/infraprime/dashboard/assets/dist/js/app.min.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/dist/js/app.min.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="http://localhost/infraprime/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script src="http://localhost/infraprime/dashboard/assets/js/maskinput.js"></script>
-    <script src="http://localhost/infraprime/dashboard/assets/js/jmask.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/action_ativos.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/jquery.cookie.js"></script>
-    <script src="http://localhost/infraprime/dashboard/js/controle.js"></script>
-	<!-- SELECT2 TO FORMS-->
+    <script src="<?=$hosted;?>/dashboard/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script src="<?=$hosted;?>/dashboard/assets/js/maskinput.js"></script>
+    <script src="<?=$hosted;?>/dashboard/assets/js/jmask.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/action_ativos.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/jquery.cookie.js"></script>
+    <script src="<?=$hosted;?>/dashboard/js/controle.js"></script>
+
+	<!-- SELECT2 TO FORMS
+	-->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Validation -->
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 	<script>
+		
+	//Date picker
+    $('#rel_di').datepicker({
+      format: 'dd/mm/yyyy',                
+    language: 'pt-BR'
+    });
+
+	//Date picker
+    $('#rel_df').datepicker({
+      format: 'dd/mm/yyyy',                
+    language: 'pt-BR'
+    });
+		
 		$(".select2").select2({
 			tags: true,
 			theme: "classic"
 		});
 		$(".date").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});	
+		
 	</script>
 </body>
 </html>	
