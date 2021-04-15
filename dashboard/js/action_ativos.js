@@ -249,12 +249,12 @@ $(document.body).on("click","#btn_cadEmp", function(){
 		
 	/*---------------|FIM DE ALTERAR EMPRESA|------------------*/	
 
-	/*---------------|EXCLUIR  EMPRESA|-----------------*\
-	|	Author: 	Cleber Marrara Prado				 | 
-	|	E-mail: 	cleber.marrara.prado@gmail.com		 |
-	|	Version:	1.0									 |
-	|	Date:       31/10/2016						   	 |
-	\---------------------------------------------------*/ 
+/*---------------|EXCLUIR  EMPRESA|-----------------*\
+	|	Author: 	Cleber Marrara Prado							| 
+	|	E-mail: 	cleber.marrara.prado@gmail.com					|
+	|	Version:	1.0												|
+	|	Date:       31/10/2016						   				|
+	\--------------------------------------------------------------*/ 
 		
 		/*|COM A CLASSE excHoras, FAZER A EXCLUSÃO DO BD|*/
 		$(document.body).on("click",".exc_Emp",function(){
@@ -6337,6 +6337,8 @@ $(document.body).on("click","#btn_cadServico", function(){
 				mq_nome:         $("#mq_nome").val(),
 				mq_tag:    		 $("#mq_tag").val(),				
 				mq_proc:   		 $("#mq_proc").val(),
+				mq_modelo: 		 $("#mq_modelo").val(),
+				sel_fab:         $("#sel_fab").val(),
 				sel_mqmemoria:   $("#sel_mqmemoria").val(),
 				sel_mqhd:        $("#sel_mqhd").val(),
 				sel_mqos:        $("#sel_mqos").val(),				

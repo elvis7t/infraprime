@@ -51,6 +51,14 @@ $fn = new functions();
 					$rs->FreeSql($sql);
 					$rs->GeraDados();
 					
+					$emp_id     	= $rs->fld("emp_id");  
+					$tipo_id    	= $rs->fld("mq_tipoId");  
+					$mq_proc    	= $rs->fld("mq_proc");  
+					$mq_mschave    	= $rs->fld("mq_mschave");  
+					$mq_tag     	= $rs->fld("mq_tag");  
+					$mq_nome    	= $rs->fld("mq_nome");  
+					$mq_datacad    	= $rs->fld("mq_datacad");  
+					$mq_modelo    	= $rs->fld("mq_modelo");  
 					$mq_id       	= $rs->fld("mq_id");  
 					$usu_nome       = $rs->fld("usu_nome");  
 					$mq_status      = $rs->fld("mq_status");  
@@ -69,6 +77,7 @@ $fn = new functions();
 					$mq_ip 			= $rs->fld("mq_ip"); 				
 					$mq_servcluster	= $rs->fld("mq_servcluster"); 				
 					$mq_servsn      = $rs->fld("mq_servsn");
+					$fab_id         = $rs->fld("fab_id"); 				
 					$mq_nf	        = $rs->fld("mq_nf"); 				
 					$mq_servobs     = $rs->fld("mq_servobs"); 				
 					$mq_nota_fiscal = $mq_nf._.$mq_id; 					
@@ -122,7 +131,18 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-industry"></i>
 											</div>
-											<input type="text" DISABLED class="form-control" name="marc_nome" id="marc_nome" value="<?=$rs->fld("fab_nome");?>"/>
+											<select class="form-control select2" id="sel_fab" name="sel_fab" >    
+												<option value="">Selecione:</option>
+												<?php
+												$whr = "fab_tipoId = ".$tipo_id;
+												$rs->Seleciona("*","mq_fabricante",$whr); //É o mesmo que SELECT campos FROM tabela WHERE condição															 
+												while($rs->GeraDados()){ // enquanto gerar dados da pesquisa
+												?>
+												<option value="<?=$rs->fld("fab_id");?>"<?=($rs->fld("fab_id")==$fab_id?"SELECTED":"");?>> <?=$rs->fld("fab_nome");?></option>      
+												<?php
+												}  
+												?> 
+											</select>
 										</div>
 									</div>
 									<!-- /.col -->
@@ -132,7 +152,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-laptop"></i> 
 											</div>
-											<input type="text" DISABLED class="form-control" name="mq_modelo" id="mq_modelo" value="<?=$rs->fld("mq_modelo")?>"/>  
+											<input type="text"  class="form-control" name="mq_modelo" id="mq_modelo" value="<?=$mq_modelo;?>"/>  
 										</div>
 									</div> 
 									<!-- /.col -->
@@ -142,7 +162,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-calendar-check-o"></i>
 											</div>
-											<input type="data" DISABLED class="form-control" name="mq_datacad" id="mq_datacad"  value="<?=$fn->data_br($rs->fld("mq_datacad"));?>"/>
+											<input type="data" DISABLED class="form-control" name="mq_datacad" id="mq_datacad"  value="<?=$fn->data_br($mq_datacad);?>"/>
 										</div>
 									</div>
 									<!-- /.col -->
@@ -156,7 +176,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-desktop"></i>
 											</div>
-											<input type="text"  class="form-control" name="mq_nome" id="mq_nome" value="<?=$rs->fld("mq_nome")?>"/>  
+											<input type="text"  class="form-control" name="mq_nome" id="mq_nome" value="<?=$mq_nome;?>"/>  
 										</div>
 									</div>
 									<!-- /.col -->
@@ -166,7 +186,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-tag"></i>
 											</div>
-											<input type="text" class="form-control" id="mq_tag" name="mq_tag"  value="<?=$rs->fld("mq_tag")?>"/>
+											<input type="text" class="form-control" id="mq_tag" name="mq_tag"  value="<?=$mq_tag;?>"/>
 										</div>
 									</div>
 									<!-- /.col -->
@@ -176,7 +196,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-key"></i>
 											</div>
-											<input type="text" class="form-control" id="mq_mschave" name="mq_mschave"  value="<?=$rs->fld("mq_mschave")?>"/>
+											<input type="text" class="form-control" id="mq_mschave" name="mq_mschave"  value="<?=$mq_mschave;?>"/>
 										</div>
 									</div>
 									<!-- /.col -->	
@@ -186,7 +206,7 @@ $fn = new functions();
 											<div class="input-group-addon">
 											  <i class="fa fa-bug"></i>
 											</div>
-											<input type="text" class="form-control" id="mq_proc" name="mq_proc"  value="<?=$rs->fld("mq_proc")?>"/>
+											<input type="text" class="form-control" id="mq_proc" name="mq_proc"  value="<?=$mq_proc;?>"/>
 										</div>
 									</div>
 									<!-- /.col -->									

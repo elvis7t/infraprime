@@ -3887,7 +3887,9 @@ if($acao == "Altera_Servidor"){
 		$dados["mq_servsn"]         = $mq_servsn;	
 		$dados["mq_tag"]			= $mq_tag;		  	
 		$dados["mq_proc"] 	        = $mq_proc;	
+		$dados["mq_modelo"]	        = $mq_modelo;	
 		$dados["mq_memId"]		    = $sel_mqmemoria; 	
+		$dados["mq_fabId"]		    = $sel_fab; 	
 		$dados["mq_hdId"]			= $sel_mqhd; 	
 		$dados["mq_osId"]			= $sel_mqos;  		
 		$dados["mq_statusId"]		= $sel_mqstatus;		
