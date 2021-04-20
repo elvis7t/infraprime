@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Abr-2021 às 17:26
+-- Tempo de geração: 20-Abr-2021 às 22:32
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -6806,7 +6806,19 @@ INSERT INTO `eq_tipo` (`tipo_id`, `tipo_empId`, `tipo_desc`) VALUES
 (78, 3, 'Roteador 4G Wi-fi'),
 (79, 4, 'Telefone'),
 (80, 4, 'Plastificadora'),
-(81, 4, 'Roteador');
+(81, 4, 'Roteador'),
+(82, 3, 'Totem'),
+(83, 6, 'Gravador Digital'),
+(84, 3, 'Servidor'),
+(85, 4, 'Servidor'),
+(86, 5, 'Servidor'),
+(87, 7, 'Servidor'),
+(88, 2, 'Servidor'),
+(89, 6, 'Servidor'),
+(90, 9, 'Servidor'),
+(91, 11, 'Servidor'),
+(92, 12, 'Servidor'),
+(93, 3, 'Nobreak');
 
 -- --------------------------------------------------------
 
@@ -7685,7 +7697,8 @@ INSERT INTO `sys_logado` (`log_id`, `log_user`, `log_classe`, `log_token`, `log_
 (2144, 'admin', 1, 'a3b22f20a82429a0f5654dc738d94a3c', '2021-02-26 14:38:01', '2021-02-26 15:38:01', '1'),
 (2145, 'admin', 1, '8f1957c990d95f1701270a4ac20ea9f9', '2021-02-26 16:40:02', '2021-02-26 17:40:02', '1'),
 (2146, 'admin', 1, '1ab8811af0540493322d48178667635a', '2021-02-26 16:41:33', '2021-02-26 17:41:33', '0'),
-(2147, 'admin', 1, '6bca712c0aeb175922f9da90f96a3ca9', '2021-03-04 11:24:32', '2021-03-04 12:24:32', '1');
+(2147, 'admin', 1, '6bca712c0aeb175922f9da90f96a3ca9', '2021-03-04 11:24:32', '2021-03-04 12:24:32', '1'),
+(2148, 'admin', 1, '965fd38581ff6aaaa4de899afaa55164', '2021-04-12 19:57:23', '2021-04-12 20:57:23', '1');
 
 -- --------------------------------------------------------
 
@@ -8293,7 +8306,7 @@ ALTER TABLE `eq_solicitacao`
 -- AUTO_INCREMENT de tabela `eq_tipo`
 --
 ALTER TABLE `eq_tipo`
-  MODIFY `tipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `tipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de tabela `mq_emprestimo`
@@ -8377,7 +8390,7 @@ ALTER TABLE `sys_diretores`
 -- AUTO_INCREMENT de tabela `sys_logado`
 --
 ALTER TABLE `sys_logado`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2148;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2149;
 
 --
 -- AUTO_INCREMENT de tabela `sys_mail`
