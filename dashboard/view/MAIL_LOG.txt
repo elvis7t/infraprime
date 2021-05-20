@@ -1784,3 +1784,6 @@ Erros: Sem erros
 
 [09/12/2020 13:05:07] Enviado para elsilva@vilagalvao.com.br com sucesso!
 Erros: Sem erros
+
+[20/05/2021 10:50:11] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
