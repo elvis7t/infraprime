@@ -61,6 +61,7 @@ require_once("../model/recordset.php");
 										<th>Departamento</th> 
 										<th>Usu&aacute;rio</th>
 										<th>Nome</th>
+										<th>TAG</th>
 										<th>Fabricante</th>
 										<th>Tipo</th>
 										<th>Modelo</th>

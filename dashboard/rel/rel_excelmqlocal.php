@@ -45,6 +45,7 @@ extract($_GET);
 		<td>'.$rs->fld("dp_nome").'</td>
 		<td>'.$rs->fld("at_usu_nome").'</td>
 		<td>'.$rs->fld("mq_nome").'</td>
+		<td>'.$rs->fld("mq_tag").'</td>
 		<td>'.$rs->fld("fab_nome").'</td>
 		<td>'.$rs->fld("tipo_desc").'</td>
 		<td>'.$rs->fld("mq_modelo").'</td>

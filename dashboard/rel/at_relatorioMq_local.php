@@ -81,6 +81,7 @@ $rs = new recordset();
 													<th>Departamento</th> 
 													<th>Usu&aacute;rio</th>
 													<th>Nome</th>
+													<th>TAG</th>
 													<th>Fabricante</th>
 													<th>Tipo</th>
 													<th>Modelo</th>
