@@ -1787,3 +1787,18 @@ Erros: Sem erros
 
 [20/05/2021 10:50:11] Enviado para elsilva@vilagalvao.com.br com sucesso!
 Erros: SMTP Error: Could not connect to SMTP host.
+
+[25/05/2021 14:39:42] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
+
+[25/05/2021 14:39:44] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
+
+[27/05/2021 13:29:43] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
+
+[27/05/2021 13:29:45] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
+
+[27/05/2021 13:29:47] Enviado para elsilva@vilagalvao.com.br com sucesso!
+Erros: SMTP Error: Could not connect to SMTP host.
